@@ -213,6 +213,15 @@
   left: 149px;
 }
 
+.emailSection {
+  top: 590px;
+  left: 150px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .submit {
   justify-content: space-between;
   align-items: center;

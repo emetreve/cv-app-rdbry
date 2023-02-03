@@ -19,6 +19,7 @@ function PersonalPage() {
   const [nameValid, setNameValid] = useState("");
   const [surnameValid, setSurnameValid] = useState("");
   const [pictureValid, setPictureValid] = useState("");
+  const [emailValid, setEmailValid] = useState("");
 
   function handleName(e) {
     const updatedPersonal = { ...personal };
@@ -46,6 +47,23 @@ function PersonalPage() {
       setSurnameValid("გამოიყენე ქართული ასოები");
     } else {
       setSurnameValid("");
+    }
+    return true;
+  }
+
+  function handleEmail(e) {
+    const updatedPersonal = { ...personal };
+    updatedPersonal.email = e.target.value;
+    setPersonal(updatedPersonal);
+    localStorage.setItem("email", `${e.target.value}`);
+    if (e.target.value.length < 2) {
+      setEmailValid("იმეილი სავალდებულოა");
+    } else if (e.target.value.slice(-12) !== "@redberry.ge") {
+      setEmailValid("უნდა მთავრდებოდეს @redberry.ge-ით");
+    } else if (e.target.value.length < 13) {
+      setEmailValid("იმეილი ძალზე მოკლეა");
+    } else {
+      setEmailValid("");
     }
     return true;
   }
@@ -89,7 +107,7 @@ function PersonalPage() {
               <p style={nameValid ? { color: "red" } : null}>სახელი</p>
               <input
                 className={styles.inputItem}
-                placeholder="ანზორი"
+                placeholder="ელენე"
                 value={personal.name || localStorage.getItem("name") || ""}
                 type="text"
                 onChange={handleName}
@@ -107,7 +125,7 @@ function PersonalPage() {
               <p>გვარი</p>
               <input
                 className={styles.inputItem}
-                placeholder="მუმლაძე"
+                placeholder="მეტრეველი"
                 type="text"
                 value={
                   localStorage.getItem("surname") || personal.surname || ""
@@ -160,6 +178,24 @@ function PersonalPage() {
                   console.log(personal);
                 }}
               />
+              <div className={styles.emailSection}>
+                <p style={emailValid ? { color: "red" } : null}>ელ.ფოსტა</p>
+
+                <input
+                  className={styles.inputItem}
+                  placeholder="emetreve@redberry.ge"
+                  value={personal.email || localStorage.getItem("email") || ""}
+                  type="text"
+                  onChange={handleEmail}
+                  style={emailValid ? { borderColor: "red" } : null}
+                />
+                <p
+                  style={emailValid ? { color: "red" } : null}
+                  className={styles.hint}
+                >
+                  {emailValid || "მინიმუმ 2 ასო, ქართული ასოები"}
+                </p>
+              </div>
             </div>
 
             <button
@@ -168,6 +204,8 @@ function PersonalPage() {
                 !localStorage.getItem("name") ||
                 !localStorage.getItem("surname") ||
                 !localStorage.getItem("picture") ||
+                !localStorage.getItem("email") ||
+                emailValid.length > 1 ||
                 pictureValid.length > 1 ||
                 nameValid.length > 1 ||
                 surnameValid.length > 1
