@@ -1,0 +1,19 @@
+@font-face {
+  font-family: HelveticaNeue;
+  font-weight: bold;
+  src: url("/src/fonts/HelveticaNeue.ttc") format("TTC");
+}
+
+body {
+  width: 1920px;
+  height: 1080px;
+}
+
+:root {
+  font-family: HelveticaNeue;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
