@@ -61,14 +61,17 @@ function PersonalPage() {
         const picFile = e.target;
         const updatedPersonal = { ...personal };
         updatedPersonal.picture = picFile.result;
-        setPersonal(updatedPersonal);
         localStorage.setItem("picture", picFile.result);
+        setPersonal(updatedPersonal);
+
+        console.log(999, picFile.result);
       });
       pickReader.readAsDataURL(file);
 
       setPictureValid("");
       setPictureName(file.name);
       localStorage.setItem("pictureName", file.name);
+
       //   window.location.reload(true);
     }
   }
@@ -141,6 +144,22 @@ function PersonalPage() {
                   {pictureName || localStorage.getItem("pictureName")}
                 </p>
               </label>
+
+              <p className={styles.aboutMeLabel}>
+                ჩემ შესახებ (არასავალდებულო)
+              </p>
+              <textarea
+                className={styles.textArea}
+                placeholder="ზოგადი ინფო შენ შესახებ"
+                value={localStorage.getItem("about") || personal.about || ""}
+                onChange={(e) => {
+                  localStorage.setItem("about", e.target.value);
+                  const updatedPersonal = { ...personal };
+                  updatedPersonal.about = e.target.value;
+                  setPersonal(updatedPersonal);
+                  console.log(personal);
+                }}
+              />
             </div>
 
             <button
@@ -148,6 +167,8 @@ function PersonalPage() {
               disabled={
                 !localStorage.getItem("name") ||
                 !localStorage.getItem("surname") ||
+                !localStorage.getItem("picture") ||
+                pictureValid.length > 1 ||
                 nameValid.length > 1 ||
                 surnameValid.length > 1
               }
@@ -156,17 +177,17 @@ function PersonalPage() {
             </button>
           </div>
           <div className={styles.rightColumn}>
-            {personal.picture !== "" ||
-              (localStorage.getItem("picture")?.length > 1 && (
-                <>
-                  {console.log(personal.picure)} <br />
-                  <img
-                    src={personal.picture || localStorage.getItem("picture")}
-                    style={{ height: "200px" }}
-                    alt="avatar "
-                  />
-                </>
-              ))}
+            {localStorage.getItem("picture")?.length > 1 && (
+              <>
+                {console.log(200000, personal.picture)}
+                <br />
+                <img
+                  src={localStorage.getItem("picture")}
+                  style={{ height: "200px" }}
+                  alt="avatar "
+                />
+              </>
+            )}
           </div>
         </div>
       </div>

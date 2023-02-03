@@ -190,6 +190,29 @@
   color: #0e80bf;
 }
 
+.aboutMeLabel {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: #000000;
+  top: 420px;
+  left: 150px;
+  position: absolute;
+}
+
+.textArea {
+  box-sizing: border-box;
+  width: 775px;
+  height: 103px;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+  top: 450px;
+  position: absolute;
+  left: 149px;
+}
+
 .submit {
   justify-content: space-between;
   align-items: center;
