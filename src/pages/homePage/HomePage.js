@@ -4,6 +4,7 @@ import styles from "./HomePage.module.css";
 import logo from "../../images/homeLogo.png";
 import line from "../../images/line.png";
 import background from "../../images/homeBackground.png";
+import seal from "../../images/homeSeal.png";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -20,6 +21,11 @@ function HomePage() {
         <button onClick={() => navigate("/personal")} className={styles.button}>
           რეზიუმეს დამატება
         </button>
+        <img
+          src={seal}
+          className={styles.seal}
+          alt="rednerry seal with transparent background"
+        />
       </div>
     </>
   );

@@ -1,0 +1,224 @@
+.wrapper {
+  position: relative;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  height: 1080px;
+  background-color: #292c2d03;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  border: 1px solid red;
+}
+
+.title {
+  position: absolute;
+  left: 149px;
+  top: 47px;
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #1a1a1a;
+}
+
+.pageCount {
+  position: absolute;
+  left: 890px;
+  top: 49px;
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: right;
+  color: #1a1a1a;
+}
+
+.divider {
+  position: absolute;
+  width: 765px;
+  height: 0px;
+  left: 150px;
+  top: 88px;
+  border: 1px solid #1a1a1a;
+}
+
+.nameSection {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  width: 371px;
+  height: 21px;
+
+  top: 160px;
+  left: 149px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: #000000;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.lastNameSection {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  width: 371px;
+  height: 21px;
+
+  top: 160px;
+  left: 570px;
+
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: #000000;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.inputItem {
+  box-sizing: border-box;
+  width: 350px;
+  height: 48px;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.hint {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  color: #2e2e2e;
+
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.photoText {
+  position: absolute;
+  left: 150px;
+  top: 325px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #1a1a1a;
+}
+
+.photoName {
+  position: absolute;
+  left: 510px;
+  top: 324px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #0e80bf;
+}
+
+.photoButton {
+  position: absolute;
+
+  width: 95px;
+  height: 34px;
+  left: 401px;
+  top: 319px;
+  background: #0e80bf;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  color: #ffffff;
+  border: none;
+  transition: var(--transition);
+}
+.photoButton:hover {
+  cursor: pointer;
+  transform: scale(1.005);
+  border: 0.5px solid #0e80bf;
+  background-color: transparent;
+  color: #0e80bf;
+}
+
+.submit {
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 160px;
+  height: 52px;
+  right: 1000px;
+  bottom: 65px;
+  background: #6b40e3;
+  border-radius: 4px;
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  transition: var(--transition);
+}
+
+.submit:enabled:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+  border: 1px solid var(--main-red);
+  background-color: transparent;
+  color: var(--main-red);
+}
+
+.submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
