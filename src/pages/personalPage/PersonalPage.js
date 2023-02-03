@@ -9,9 +9,9 @@ function PersonalPage() {
     name: localStorage.getItem("name") || "",
     surname: localStorage.getItem("surname") || "",
     picture: localStorage.getItem("picture") || "",
-    // about: false,
-    // emai: false,
-    // phone: false,
+    about: false,
+    emai: false,
+    phone: false,
   });
 
   const [pictureName, setPictureName] = useState("");
@@ -20,6 +20,7 @@ function PersonalPage() {
   const [surnameValid, setSurnameValid] = useState("");
   const [pictureValid, setPictureValid] = useState("");
   const [emailValid, setEmailValid] = useState("");
+  const [phoneValid, setPhoneValid] = useState("");
 
   function handleName(e) {
     const updatedPersonal = { ...personal };
@@ -92,6 +93,29 @@ function PersonalPage() {
 
       //   window.location.reload(true);
     }
+  }
+
+  function handlePhone(e) {
+    const updatedPersonal = { ...personal };
+    updatedPersonal.phone = e.target.value;
+    setPersonal(updatedPersonal);
+    localStorage.setItem("phone", `${e.target.value}`);
+
+    if (e.target.value.length < 2) {
+      setPhoneValid("მობილურის ნომერი სავალდებულოა");
+    } else if (e.target.value.slice(0, 4) !== "+995") {
+      setPhoneValid("მობილურის ნომერი უნდა იწყებოდეს +995-ით");
+    } else if (e.target.value.length !== 13) {
+      setPhoneValid("მობილურის ნომერი უნდა იყოს 13 ნიშნა");
+    } else if (!/^[0-9\s+]+$/.test(e.target.value)) {
+      setPhoneValid("მობილურის ნომერში ჩაწერეთ მხოლოდ ციფრები");
+    } else if (/\s/g.test(e.target.value)) {
+      setPhoneValid("მობილურის ნომერში ჩაწერეთ მხოლოდ ციფრები");
+    } else {
+      setPhoneValid("");
+    }
+
+    return true;
   }
 
   return (
@@ -182,7 +206,7 @@ function PersonalPage() {
                 <p style={emailValid ? { color: "red" } : null}>ელ.ფოსტა</p>
 
                 <input
-                  className={styles.inputItem}
+                  className={styles.inputItemLong}
                   placeholder="emetreve@redberry.ge"
                   value={personal.email || localStorage.getItem("email") || ""}
                   type="text"
@@ -194,6 +218,27 @@ function PersonalPage() {
                   className={styles.hint}
                 >
                   {emailValid || "მინიმუმ 2 ასო, ქართული ასოები"}
+                </p>
+              </div>
+
+              <div className={styles.phoneSection}>
+                <p style={phoneValid ? { color: "red" } : null}>
+                  მობილურის ნომერი
+                </p>
+
+                <input
+                  className={styles.inputItemLong}
+                  placeholder="+995551123456"
+                  value={personal.phone || localStorage.getItem("phone") || ""}
+                  type="text"
+                  onChange={handlePhone}
+                  style={phoneValid ? { borderColor: "red" } : null}
+                />
+                <p
+                  style={phoneValid ? { color: "red" } : null}
+                  className={styles.hint}
+                >
+                  {phoneValid || "მინიმუმ 2 ასო, ქართული ასოები"}
                 </p>
               </div>
             </div>

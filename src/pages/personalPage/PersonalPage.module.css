@@ -128,6 +128,19 @@
   flex-grow: 0;
 }
 
+.inputItemLong {
+  box-sizing: border-box;
+  width: 770px;
+  height: 48px;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
 .hint {
   font-family: "Helvetica Neue";
   font-style: normal;
@@ -215,6 +228,15 @@
 
 .emailSection {
   top: 590px;
+  left: 150px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.phoneSection {
+  top: 732px;
   left: 150px;
   position: absolute;
   display: flex;
