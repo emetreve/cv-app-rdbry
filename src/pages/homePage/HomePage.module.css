@@ -1,0 +1,44 @@
+.wrapper {
+  background-color: #ffff;
+  position: relative;
+}
+
+.background {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.logo {
+  position: absolute;
+  width: 236px;
+  height: 38px;
+  left: 70px;
+  top: 25px;
+}
+
+.line {
+  position: absolute;
+  height: 1px;
+  left: 70px;
+  right: 70px;
+  top: 89px;
+}
+
+.button {
+  padding: 15px 60px;
+  position: absolute;
+  width: 464px;
+  height: 65px;
+  left: calc(50% - 464px / 2);
+  top: 513px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ffffff;
+  text-align: center;
+}
