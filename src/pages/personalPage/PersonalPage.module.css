@@ -67,6 +67,22 @@
   border: 1px solid #1a1a1a;
 }
 
+.checkMarkShort {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 42px;
+  left: 315px;
+}
+
+.checkMarkLong {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 42px;
+  left: 730px;
+}
+
 .nameSection {
   position: absolute;
   display: flex;

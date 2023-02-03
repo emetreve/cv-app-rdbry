@@ -1,17 +1,71 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./PersonalPage.module.css";
 import line from "../../images/line.png";
+import valid from "../../images/valid.png";
+import invalid from "../../images/invalid.png";
 
 function PersonalPage() {
+  useEffect(() => {
+    if (localStorage.getItem("name")) {
+      if (localStorage.getItem("name").length < 2) {
+        setNameValid("სახელი ძალზე მოკლეა");
+      } else if (
+        !/^[ა-ჰ\s!@#$%^&*()_+=]+$/.test(localStorage.getItem("name"))
+      ) {
+        setNameValid("გამოიყენე ქართული ასოები");
+      } else {
+        setNameValid("");
+      }
+    }
+    if (localStorage.getItem("surname")) {
+      if (localStorage.getItem("surname").length < 2) {
+        setSurnameValid("გვარი ძალზე მოკლეა");
+      } else if (
+        !/^[ა-ჰ\s!@#$%^&*()_+=]+$/.test(localStorage.getItem("surname"))
+      ) {
+        setSurnameValid("გამოიყენე ქართული ასოები");
+      } else {
+        setSurnameValid("");
+      }
+    }
+
+    if (localStorage.getItem("email")) {
+      if (localStorage.getItem("email").length < 2) {
+        setEmailValid("იმეილი სავალდებულოა");
+      } else if (localStorage.getItem("email").slice(-12) !== "@redberry.ge") {
+        setEmailValid("უნდა მთავრდებოდეს @redberry.ge-ით");
+      } else if (localStorage.getItem("email") < 13) {
+        setEmailValid("იმეილი ძალზე მოკლეა");
+      } else {
+        setEmailValid("");
+      }
+    }
+
+    if (localStorage.getItem("phone")) {
+      if (localStorage.getItem("phone").length < 2) {
+        setPhoneValid("მობილურის ნომერი სავალდებულოა");
+      } else if (localStorage.getItem("phone").slice(0, 4) !== "+995") {
+        setPhoneValid("მობილურის ნომერი უნდა იწყებოდეს +995-ით");
+      } else if (localStorage.getItem("phone").length !== 13) {
+        setPhoneValid("მობილურის ნომერი უნდა იყოს 13 ნიშნა");
+      } else if (!/^[0-9\s+]+$/.test(localStorage.getItem("phone"))) {
+        setPhoneValid("მობილურის ნომერში ჩაწერეთ მხოლოდ ციფრები");
+      } else if (/\s/g.test(localStorage.getItem("phone"))) {
+        setPhoneValid("მობილურის ნომერში ჩაწერეთ მხოლოდ ციფრები");
+      } else {
+        setPhoneValid("");
+      }
+    }
+  }, []);
   const inputRef = useRef(null);
 
   const [personal, setPersonal] = useState({
     name: localStorage.getItem("name") || "",
     surname: localStorage.getItem("surname") || "",
     picture: localStorage.getItem("picture") || "",
-    about: false,
-    emai: false,
-    phone: false,
+    about: localStorage.getItem("about") || "",
+    email: localStorage.getItem("email") || "",
+    phone: localStorage.getItem("phone") || "",
   });
 
   const [pictureName, setPictureName] = useState("");
@@ -82,8 +136,6 @@ function PersonalPage() {
         updatedPersonal.picture = picFile.result;
         localStorage.setItem("picture", picFile.result);
         setPersonal(updatedPersonal);
-
-        console.log(999, picFile.result);
       });
       pickReader.readAsDataURL(file);
 
@@ -137,6 +189,23 @@ function PersonalPage() {
                 onChange={handleName}
                 style={nameValid ? { borderColor: "red" } : null}
               />
+
+              {nameValid === "" && personal.name !== "" ? (
+                <img
+                  src={valid}
+                  className={styles.checkMarkShort}
+                  alt="validated icon"
+                />
+              ) : null}
+
+              {nameValid !== "" && (
+                <img
+                  src={invalid}
+                  className={styles.checkMarkShort}
+                  alt="validated icon"
+                />
+              )}
+
               <p
                 style={nameValid ? { color: "red" } : null}
                 className={styles.hint}
@@ -157,6 +226,21 @@ function PersonalPage() {
                 onChange={handleSurname}
                 style={surnameValid ? { borderColor: "red" } : null}
               />
+              {surnameValid === "" && personal.surname !== "" ? (
+                <img
+                  src={valid}
+                  className={styles.checkMarkShort}
+                  alt="validated icon"
+                />
+              ) : null}
+
+              {surnameValid !== "" && (
+                <img
+                  src={invalid}
+                  className={styles.checkMarkShort}
+                  alt="validated icon"
+                />
+              )}
               <p
                 className={styles.hint}
                 style={surnameValid ? { color: "red" } : null}
@@ -199,8 +283,10 @@ function PersonalPage() {
                   const updatedPersonal = { ...personal };
                   updatedPersonal.about = e.target.value;
                   setPersonal(updatedPersonal);
-                  console.log(personal);
                 }}
+                style={
+                  personal.about !== "" ? { borderColor: "#98E37E" } : null
+                }
               />
               <div className={styles.emailSection}>
                 <p style={emailValid ? { color: "red" } : null}>ელ.ფოსტა</p>
@@ -213,6 +299,22 @@ function PersonalPage() {
                   onChange={handleEmail}
                   style={emailValid ? { borderColor: "red" } : null}
                 />
+
+                {emailValid === "" && personal.email !== "" ? (
+                  <img
+                    src={valid}
+                    className={styles.checkMarkLong}
+                    alt="validated icon"
+                  />
+                ) : null}
+
+                {emailValid !== "" && (
+                  <img
+                    src={invalid}
+                    className={styles.checkMarkLong}
+                    alt="validated icon"
+                  />
+                )}
                 <p
                   style={emailValid ? { color: "red" } : null}
                   className={styles.hint}
@@ -234,6 +336,21 @@ function PersonalPage() {
                   onChange={handlePhone}
                   style={phoneValid ? { borderColor: "red" } : null}
                 />
+                {phoneValid === "" && personal.phone !== "" ? (
+                  <img
+                    src={valid}
+                    className={styles.checkMarkLong}
+                    alt="validated icon"
+                  />
+                ) : null}
+
+                {phoneValid !== "" && (
+                  <img
+                    src={invalid}
+                    className={styles.checkMarkLong}
+                    alt="validated icon"
+                  />
+                )}
                 <p
                   style={phoneValid ? { color: "red" } : null}
                   className={styles.hint}

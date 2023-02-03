@@ -12,6 +12,7 @@ body {
 :root {
   font-family: HelveticaNeue;
   --main-red: #f93b1d;
+  --main-green: #98e37e;
   --transition: all 0.4s ease-in-out;
 }
 
