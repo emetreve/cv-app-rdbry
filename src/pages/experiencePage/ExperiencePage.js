@@ -22,9 +22,9 @@ function ExperiencePage() {
             <p className={styles.pageCount}>2/3</p>
             <img src={line} className={styles.divider} alt="divider" />
             <div className={styles.experienceComponentWrapper}>
-              <Experience />
-              <Experience />
-              <Experience />
+              <Experience id={1} />
+              <Experience id={2} />
+              <Experience id={3} />
             </div>
           </div>
           <div className={styles.rightColumn}>

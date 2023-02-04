@@ -1,16 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Experience.module.css";
 import valid from "../../images/valid.png";
 import invalid from "../../images/invalid.png";
 import divider from "../../images/divider.png";
 
-function Experience() {
+function Experience({ id }) {
+  useEffect(() => {
+    if (localStorage.getItem(`title${id}`)) {
+      if (localStorage.getItem(`title${id}`).length < 2) {
+        setTitleValid("სახელი ძალზე მოკლეა");
+      } else {
+        setTitleValid("");
+      }
+    }
+
+    if (localStorage.getItem(`employer${id}`)) {
+      if (localStorage.getItem(`employer${id}`).length < 2) {
+        setEmployerValid("დამსაქმებელი ძალზე მოკლეა");
+      } else {
+        setEmployerValid("");
+      }
+    }
+  }, [id]);
   const [experience, setExperience] = useState({
-    title: localStorage.getItem("title") || "",
-    employer: localStorage.getItem("employer") || "",
-    startDate: localStorage.getItem("startDate") || "",
-    endDate: localStorage.getItem("endDate") || "",
-    description: localStorage.getItem("description") || "",
+    title: localStorage.getItem(`title${id}`) || "",
+    employer: localStorage.getItem(`employer${id}`) || "",
+    startDate: localStorage.getItem(`startDate${id}`) || "",
+    endDate: localStorage.getItem(`endDate${id}`) || "",
+    description: localStorage.getItem(`description${id}`) || "",
   });
 
   const [titleValid, setTitleValid] = useState("");
@@ -23,8 +40,7 @@ function Experience() {
     const updatedExperience = { ...experience };
     updatedExperience.title = e.target.value;
     setExperience(updatedExperience);
-    localStorage.setItem("experience", JSON.stringify(updatedExperience));
-    localStorage.setItem("title", e.target.value);
+    localStorage.setItem(`title${id}`, e.target.value);
     if (e.target.value.length < 2) {
       setTitleValid("თანამდებობა ძალზე მოკლეა");
     } else {
@@ -37,9 +53,8 @@ function Experience() {
     const updatedExperience = { ...experience };
     updatedExperience.employer = e.target.value;
     setExperience(updatedExperience);
-    localStorage.setItem("experience", JSON.stringify(updatedExperience));
-    localStorage.setItem("employer", e.target.value);
-    console.log(localStorage.getItem("experience"));
+    localStorage.setItem(`employer${id}`, e.target.value);
+    console.log(localStorage.getItem(`employer${id}`));
     if (e.target.value.length < 2) {
       setEmployerValid("დამსაქმებელი ძალზე მოკლეა");
     } else {
@@ -56,7 +71,7 @@ function Experience() {
         <input
           className={styles.inputItemLong}
           placeholder="დეველოპერი, დიზაინერი, ა.შ."
-          value={experience.title || localStorage.getItem("title") || ""}
+          value={experience.title || localStorage.getItem(`title${id}`) || ""}
           type="text"
           onChange={handleTitle}
           style={titleValid ? { borderColor: "red" } : null}
@@ -88,7 +103,9 @@ function Experience() {
         <input
           className={styles.inputItemLong}
           placeholder="დამსაქმებელი"
-          value={experience.employer || localStorage.getItem("employer") || ""}
+          value={
+            experience.employer || localStorage.getItem(`employer${id}`) || ""
+          }
           type="text"
           onChange={handleEmployer}
           style={employerValid ? { borderColor: "red" } : null}
