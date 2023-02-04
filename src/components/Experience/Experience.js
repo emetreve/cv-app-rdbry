@@ -21,6 +21,14 @@ function Experience({ id }) {
         setEmployerValid("");
       }
     }
+
+    if (localStorage.getItem(`description${id}`)) {
+      if (localStorage.getItem(`description${id}`).length < 2) {
+        setDescriptionValid("დამსაქმებელი ძალზე მოკლეა");
+      } else {
+        setDescriptionValid("");
+      }
+    }
   }, [id]);
   const [experience, setExperience] = useState({
     title: localStorage.getItem(`title${id}`) || "",
@@ -34,7 +42,7 @@ function Experience({ id }) {
   const [employerValid, setEmployerValid] = useState("");
   const [startDateValid, setStartDateValid] = useState("");
   const [endDateValid, setEndDateValid] = useState("");
-  //   const [descriptionValid, setDescriptionValid] = useState("");
+  const [descriptionValid, setDescriptionValid] = useState("");
 
   function handleTitle(e) {
     const updatedExperience = { ...experience };
@@ -75,6 +83,21 @@ function Experience({ id }) {
     );
   }
 
+  function handleDescription(e) {
+    localStorage.setItem(`description${id}`, e.target.value);
+
+    const updatedExperience = { ...experience };
+    updatedExperience.description = e.target.value;
+    setExperience(updatedExperience);
+
+    if (e.target.value.length < 2) {
+      setDescriptionValid("გამოცდილება ძალზე მოკლეა");
+    } else {
+      setDescriptionValid("");
+    }
+    return true;
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.titlelSection}>
@@ -108,7 +131,6 @@ function Experience({ id }) {
           {titleValid || "მინიმუმ 2 სიმბოლო"}
         </p>
       </div>
-
       <div className={styles.employerlSection}>
         <p style={employerValid ? { color: "red" } : null}>დამსაქმებელი</p>
 
@@ -145,7 +167,6 @@ function Experience({ id }) {
           {employerValid || "მინიმუმ 2 სიმბოლო"}
         </p>
       </div>
-
       <div className={styles.startDateSection}>
         <p style={startDateValid ? { color: "red" } : null}>დაწყების რიცხვი</p>
         <input
@@ -176,7 +197,6 @@ function Experience({ id }) {
           />
         )}
       </div>
-
       <div className={styles.endDateSection}>
         <p style={endDateValid ? { color: "red" } : null}>დამთავრების რიცხვი</p>
         <input
@@ -211,7 +231,20 @@ function Experience({ id }) {
           />
         )}
       </div>
-
+      <div className={styles.descriptionWrapper}>
+        <p className={styles.descriptionLabel}>აღწერა</p>
+        <textarea
+          className={styles.textArea}
+          placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
+          value={
+            localStorage.getItem(`description${id}`) ||
+            experience.description ||
+            ""
+          }
+          onChange={handleDescription}
+          style={descriptionValid ? { borderColor: "red" } : null}
+        />
+      </div>
       <img src={divider} className={styles.divider} alt="divider" />
     </div>
   );

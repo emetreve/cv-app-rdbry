@@ -103,10 +103,24 @@
   position: absolute;
 }
 
+.descriptionWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.textArea {
+  width: 749px;
+  height: 123px;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+}
+
 .divider {
   position: absolute;
   width: 768px;
   height: 1px;
   left: 0;
-  top: 430px;
+  top: 625px;
 }

@@ -62,3 +62,12 @@ input[type="date"] {
   line-height: 21px;
   color: rgba(0, 0, 0, 0.6);
 }
+
+input:focus {
+  outline: none !important;
+  box-shadow: 0 0 10px #719ece56;
+}
+textarea:focus {
+  outline: none !important;
+  box-shadow: 0 0 10px #719ece56;
+}

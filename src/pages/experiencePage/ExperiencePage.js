@@ -24,7 +24,6 @@ function ExperiencePage() {
             <div className={styles.experienceComponentWrapper}>
               <Experience id={1} />
               <Experience id={2} />
-              <Experience id={3} />
             </div>
           </div>
           <div className={styles.rightColumn}>
