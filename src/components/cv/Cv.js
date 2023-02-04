@@ -12,7 +12,14 @@ function Cv() {
             .getItem("name")
             .toLocaleUpperCase()} `}</p>
         )}
-        {localStorage.getItem("surname") && (
+
+        {localStorage.getItem("surname") && !localStorage.getItem("name") && (
+          <p
+            className={styles.surname}
+            style={{ marginLeft: "84px" }}
+          >{`${localStorage.getItem("surname").toLocaleUpperCase()} `}</p>
+        )}
+        {localStorage.getItem("surname") && localStorage.getItem("name") && (
           <p className={styles.surname}>{`${localStorage
             .getItem("surname")
             .toLocaleUpperCase()} `}</p>
