@@ -377,6 +377,8 @@ function PersonalPage() {
                 !localStorage.getItem("surname") ||
                 !localStorage.getItem("picture") ||
                 !localStorage.getItem("email") ||
+                !localStorage.getItem("phone") ||
+                phoneValid.length > 1 ||
                 emailValid.length > 1 ||
                 pictureValid.length > 1 ||
                 nameValid.length > 1 ||
@@ -387,7 +389,18 @@ function PersonalPage() {
             </button>
           </div>
           <div className={styles.rightColumn}>
-            <Cv />
+            <Cv
+              hidePersonal={
+                !localStorage.getItem("name") ||
+                !localStorage.getItem("surname") ||
+                !localStorage.getItem("picture") ||
+                !localStorage.getItem("email") ||
+                emailValid.length > 1 ||
+                pictureValid.length > 1 ||
+                nameValid.length > 1 ||
+                surnameValid.length > 1
+              }
+            />
           </div>
         </div>
       </div>
