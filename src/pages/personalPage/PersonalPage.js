@@ -8,6 +8,9 @@ import valid from "../../images/valid.png";
 import invalid from "../../images/invalid.png";
 
 function PersonalPage() {
+  const inputRef = useRef(null);
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (localStorage.getItem("name")) {
       if (localStorage.getItem("name").length < 2) {
@@ -60,8 +63,6 @@ function PersonalPage() {
       }
     }
   }, []);
-  const inputRef = useRef(null);
-  const navigate = useNavigate();
 
   const [personal, setPersonal] = useState({
     name: localStorage.getItem("name") || "",
@@ -372,6 +373,10 @@ function PersonalPage() {
 
             <button
               className={styles.submit}
+              onClick={() => {
+                navigate("/experience");
+                window.scrollTo(0, 0);
+              }}
               disabled={
                 !localStorage.getItem("name") ||
                 !localStorage.getItem("surname") ||

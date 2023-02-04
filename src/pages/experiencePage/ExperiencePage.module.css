@@ -1,0 +1,80 @@
+.wrapper {
+  position: relative;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  height: 1080px;
+  background-color: #292c2d03;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.goBack {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 48px;
+  top: 45px;
+}
+
+.goBack:hover {
+  cursor: pointer;
+}
+
+.title {
+  position: absolute;
+  left: 149px;
+  top: 47px;
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #1a1a1a;
+}
+
+.pageCount {
+  position: absolute;
+  left: 890px;
+  top: 49px;
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: right;
+  color: #1a1a1a;
+}
+
+.divider {
+  position: absolute;
+  width: 765px;
+  height: 0px;
+  left: 150px;
+  top: 88px;
+  border: 1px solid #1a1a1a;
+}
+
+.experienceComponentWrapper {
+  margin-top: 170px;
+  margin-left: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 90px;
+}

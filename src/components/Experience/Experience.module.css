@@ -1,0 +1,50 @@
+.titlelSection {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.inputItemLong {
+  box-sizing: border-box;
+  width: 770px;
+  height: 48px;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.checkMarkLong {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 42px;
+  left: 730px;
+}
+
+.hint {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  color: #2e2e2e;
+
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.divider {
+  position: absolute;
+  width: 768px;
+  height: 1px;
+  left: 0;
+  top: 130px;
+}
