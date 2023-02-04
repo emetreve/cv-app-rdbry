@@ -1,5 +1,8 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Cv from "../../components/cv/Cv";
 import styles from "./PersonalPage.module.css";
+import back from "../../images/back.png";
 import line from "../../images/line.png";
 import valid from "../../images/valid.png";
 import invalid from "../../images/invalid.png";
@@ -58,6 +61,7 @@ function PersonalPage() {
     }
   }, []);
   const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   const [personal, setPersonal] = useState({
     name: localStorage.getItem("name") || "",
@@ -175,6 +179,12 @@ function PersonalPage() {
       <div className={styles.wrapper}>
         <div className={styles.row}>
           <div className={styles.leftColumn}>
+            <img
+              src={back}
+              onClick={() => navigate("/")}
+              className={styles.goBack}
+              alt="go back"
+            />
             <p className={styles.title}>ᲞᲘᲠᲐᲓᲘ ᲘᲜᲤᲝ</p>
             <p className={styles.pageCount}>1/3</p>
             <img src={line} className={styles.divider} alt="divider" />
@@ -377,17 +387,7 @@ function PersonalPage() {
             </button>
           </div>
           <div className={styles.rightColumn}>
-            {localStorage.getItem("picture")?.length > 1 && (
-              <>
-                {console.log(200000, personal.picture)}
-                <br />
-                <img
-                  src={localStorage.getItem("picture")}
-                  style={{ height: "200px" }}
-                  alt="avatar "
-                />
-              </>
-            )}
+            <Cv />
           </div>
         </div>
       </div>

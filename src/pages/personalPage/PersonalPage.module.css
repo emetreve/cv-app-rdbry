@@ -30,7 +30,18 @@
   flex-direction: column;
   flex-basis: 100%;
   flex: 1;
-  border: 1px solid red;
+}
+
+.goBack {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 48px;
+  top: 45px;
+}
+
+.goBack:hover {
+  cursor: pointer;
 }
 
 .title {

@@ -1,0 +1,99 @@
+.footLogo {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  left: 1090px;
+  bottom: 50px;
+}
+
+.name {
+  margin-top: 68px;
+  margin-left: 85px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 42px;
+  color: var(--main-red);
+  display: inline;
+}
+
+.surname {
+  margin-top: 68px;
+  margin-left: 15px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 42px;
+  color: var(--main-red);
+  display: inline;
+}
+
+.emailIcon {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  left: 1045px;
+  top: 125px;
+}
+
+.email {
+  position: absolute;
+  left: 1075px;
+  top: 125px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #1a1a1a;
+}
+
+.phoneIcon {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  left: 1045px;
+  top: 160px;
+}
+
+.phone {
+  position: absolute;
+  left: 1075px;
+  top: 160px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #1a1a1a;
+}
+
+.aboutTitle {
+  left: 1045px;
+  top: 220px;
+  position: absolute;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--main-red);
+}
+
+.about {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #000000;
+  left: 1045px;
+  top: 252px;
+  position: absolute;
+  width: 450px;
+}
+
+.image {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  left: 1520px;
+  top: 48px;
+  border-radius: 133px;
+}
