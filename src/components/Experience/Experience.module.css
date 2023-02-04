@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  margin-top: 30px;
 }
 
 .titlelSection,
@@ -41,6 +42,22 @@
   left: 730px;
 }
 
+.checkMark {
+  height: 21px;
+  width: 21px;
+  position: absolute;
+  top: 318.8px;
+  left: 315px;
+}
+
+.checkMarkEnd {
+  height: 21px;
+  width: 21px;
+  position: absolute;
+  top: 41px;
+  left: 315px;
+}
+
 .hint {
   font-family: "Helvetica Neue";
   font-style: normal;
@@ -50,11 +67,40 @@
   display: flex;
   align-items: center;
   color: #2e2e2e;
-
   flex: none;
   order: 2;
   align-self: stretch;
   flex-grow: 0;
+}
+
+.startDateSection {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.inputDate {
+  display: flex;
+  height: 48px;
+  width: 320px;
+  align-items: flex-start;
+  align-items: center;
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+  padding-left: 14px;
+  padding-right: 20px;
+}
+
+.endDateSection {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  left: 415px;
+  top: 275px;
+  position: absolute;
 }
 
 .divider {
@@ -62,5 +108,5 @@
   width: 768px;
   height: 1px;
   left: 0;
-  top: 260px;
+  top: 430px;
 }

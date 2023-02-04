@@ -32,8 +32,8 @@ function Experience({ id }) {
 
   const [titleValid, setTitleValid] = useState("");
   const [employerValid, setEmployerValid] = useState("");
-  //   const [startDateValid, setStartDateValid] = useState("");
-  //   const [endDateValid, setEndDateValid] = useState("");
+  const [startDateValid, setStartDateValid] = useState("");
+  const [endDateValid, setEndDateValid] = useState("");
   //   const [descriptionValid, setDescriptionValid] = useState("");
 
   function handleTitle(e) {
@@ -61,6 +61,18 @@ function Experience({ id }) {
       setEmployerValid("");
     }
     return true;
+  }
+
+  function handleDates(param) {
+    const updatedExperience = { ...experience };
+    updatedExperience[`${param}Date`] = document.getElementById(
+      `${param}Date${id}`
+    ).value;
+    setExperience(updatedExperience);
+    localStorage.setItem(
+      `${param}Date${id}`,
+      `${document.getElementById(`${param}Date${id}`).value}`
+    );
   }
 
   return (
@@ -132,6 +144,72 @@ function Experience({ id }) {
         >
           {employerValid || "მინიმუმ 2 სიმბოლო"}
         </p>
+      </div>
+
+      <div className={styles.startDateSection}>
+        <p style={startDateValid ? { color: "red" } : null}>დაწყების რიცხვი</p>
+        <input
+          id={`startDate${id}`}
+          className={styles.inputDate}
+          value={
+            experience.startDate || localStorage.getItem(`startDate${id}`) || ""
+          }
+          type="date"
+          onChange={() => {
+            handleDates("start");
+          }}
+          onClick={() => {
+            document.getElementById(`startDate${id}`).showPicker();
+          }}
+          style={startDateValid ? { borderColor: "red" } : null}
+        />
+
+        {startDateValid === "" && experience.startDate !== "" ? (
+          <img src={valid} className={styles.checkMark} alt="validated icon" />
+        ) : null}
+
+        {startDateValid !== "" && (
+          <img
+            src={invalid}
+            className={styles.checkMark}
+            alt="validated icon"
+          />
+        )}
+      </div>
+
+      <div className={styles.endDateSection}>
+        <p style={endDateValid ? { color: "red" } : null}>დამთავრების რიცხვი</p>
+        <input
+          id={`endDate${id}`}
+          className={styles.inputDate}
+          value={
+            experience.endDate || localStorage.getItem(`endDate${id}`) || ""
+          }
+          type="date"
+          onChange={() => {
+            handleDates("end");
+          }}
+          onClick={() => {
+            document.getElementById(`endDate${id}`).showPicker();
+          }}
+          style={endDateValid ? { borderColor: "red" } : null}
+        />
+
+        {endDateValid === "" && experience.endDate !== "" ? (
+          <img
+            src={valid}
+            className={styles.checkMarkEnd}
+            alt="validated icon"
+          />
+        ) : null}
+
+        {endDateValid !== "" && (
+          <img
+            src={invalid}
+            className={styles.checkMarkEnd}
+            alt="validated icon"
+          />
+        )}
       </div>
 
       <img src={divider} className={styles.divider} alt="divider" />
