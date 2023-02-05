@@ -40,8 +40,8 @@ function Experience({ id }) {
 
   const [titleValid, setTitleValid] = useState("");
   const [employerValid, setEmployerValid] = useState("");
-  const [startDateValid, setStartDateValid] = useState("");
-  const [endDateValid, setEndDateValid] = useState("");
+  const [startDateValid, setstartDateValid] = useState("");
+  const [endDateValid, setendDateValid] = useState("");
   const [descriptionValid, setDescriptionValid] = useState("");
 
   function handleTitle(e) {

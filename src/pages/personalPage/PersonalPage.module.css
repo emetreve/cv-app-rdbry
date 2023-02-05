@@ -282,6 +282,7 @@
   letter-spacing: 0.08em;
   color: #ffffff;
   transition: var(--transition);
+  border: none;
 }
 
 .submit:enabled:hover {

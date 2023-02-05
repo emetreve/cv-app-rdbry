@@ -14,7 +14,8 @@
   flex-direction: column;
   flex-basis: 100%;
   flex: 1;
-  height: 1080px;
+  height: fit-content;
+  padding-bottom: 260px;
   background-color: #292c2d03;
 }
 
@@ -77,4 +78,30 @@
   display: flex;
   flex-direction: column;
   gap: 90px;
+  height: fit-content;
+}
+
+.addButton {
+  position: absolute;
+  width: 289px;
+  height: 48px;
+  left: calc(50% - 289px / 2 - 664.5px);
+  bottom: 70px;
+  background: #62a1eb;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+  border: none;
+  transition: var(--transition);
+}
+
+.addButton:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+  border: 1px solid var(--main-red);
+  background-color: transparent;
+  color: var(--main-red);
 }
