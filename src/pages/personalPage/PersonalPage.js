@@ -12,6 +12,15 @@ function PersonalPage() {
   const inputRef = useRef(null);
   const navigate = useNavigate();
 
+  const [personal, setPersonal] = useState({
+    name: localStorage.getItem("name") || "",
+    surname: localStorage.getItem("surname") || "",
+    picture: localStorage.getItem("picture") || "",
+    about: localStorage.getItem("about") || "",
+    email: localStorage.getItem("email") || "",
+    phone: localStorage.getItem("phone") || "",
+  });
+
   useEffect(() => {
     if (localStorage.getItem("name")) {
       if (localStorage.getItem("name").length < 2) {
@@ -63,16 +72,19 @@ function PersonalPage() {
         setPhoneValid("");
       }
     }
-  }, []);
 
-  const [personal, setPersonal] = useState({
-    name: localStorage.getItem("name") || "",
-    surname: localStorage.getItem("surname") || "",
-    picture: localStorage.getItem("picture") || "",
-    about: localStorage.getItem("about") || "",
-    email: localStorage.getItem("email") || "",
-    phone: localStorage.getItem("phone") || "",
-  });
+    if (!localStorage.getItem("picture")) {
+      let othersPresent =
+        localStorage.getItem("name") &&
+        localStorage.getItem("surname") &&
+        localStorage.getItem("about") &&
+        localStorage.getItem("email") &&
+        localStorage.getItem("phone");
+      if (othersPresent) {
+        setPictureValid("სურათი დაგრჩა");
+      }
+    }
+  }, [personal]);
 
   const [pictureName, setPictureName] = useState("");
 
@@ -262,7 +274,12 @@ function PersonalPage() {
             </div>
 
             <div>
-              <p className={styles.photoText}>პირადი ფოტოს ატვირთვა</p>
+              <p
+                className={styles.photoText}
+                // style={pictureValid ? { color: "red" } : null}
+              >
+                პირადი ფოტოს ატვირთვა
+              </p>
 
               <input
                 ref={inputRef}
