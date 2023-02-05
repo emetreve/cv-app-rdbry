@@ -150,7 +150,7 @@
   transition: var(--transition);
 }
 
-.nextBtn:hover {
+.nextBtn:enabled:hover {
   cursor: pointer;
   transform: scale(1.02);
   border: 1px solid var(--main-red);

@@ -4,7 +4,7 @@ import valid from "../../images/valid.png";
 import invalid from "../../images/invalid.png";
 import divider from "../../images/divider.png";
 
-function Experience({ id, ready }) {
+function Experience({ id, ready, readyOthers }) {
   const [experience, setExperience] = useState({
     title: localStorage.getItem(`title${id}`) || "",
     employer: localStorage.getItem(`employer${id}`) || "",
@@ -13,7 +13,47 @@ function Experience({ id, ready }) {
     description: localStorage.getItem(`description${id}`) || "",
   });
 
+  const [titleValid, setTitleValid] = useState("");
+  const [employerValid, setEmployerValid] = useState("");
+  const [startDateValid, setstartDateValid] = useState("");
+  const [endDateValid, setendDateValid] = useState("");
+  const [descriptionValid, setDescriptionValid] = useState("");
+
   useEffect(() => {
+    if (ready === undefined) {
+      if (
+        !localStorage.getItem(`title${id}`) ||
+        localStorage.getItem(`title${id}`).length < 2 ||
+        !localStorage.getItem(`employer${id}`) ||
+        localStorage.getItem(`employer${id}`).length < 2 ||
+        !localStorage.getItem(`startDate${id}`) ||
+        !localStorage.getItem(`endDate${id}`) ||
+        !localStorage.getItem(`description${id}`) ||
+        localStorage.getItem(`description${id}`).length < 2
+      ) {
+        readyOthers(false);
+      } else {
+        readyOthers(true);
+      }
+    }
+    if (ready === undefined) {
+      let noError =
+        experience.title === "" &&
+        experience.employer === "" &&
+        experience.startDate === "" &&
+        experience.endDate === "" &&
+        experience.description === "";
+      if (noError) {
+        setTitleValid("");
+        setEmployerValid("");
+        setstartDateValid("");
+        setendDateValid("");
+        setDescriptionValid("");
+        //important part
+        readyOthers(true);
+      }
+    }
+
     if (ready) {
       if (
         !localStorage.getItem(`title${id}`) ||
@@ -37,9 +77,12 @@ function Experience({ id, ready }) {
 
     if (localStorage.getItem(`title${id}`)) {
       if (localStorage.getItem(`title${id}`).length < 2) {
-        setTitleValid("სახელი ძალზე მოკლეა");
+        setTitleValid("თანამდებობა ძალზე მოკლეა");
         if (ready) {
           ready(false);
+        }
+        if (readyOthers) {
+          readyOthers(false);
         }
       } else {
         setTitleValid("");
@@ -52,6 +95,9 @@ function Experience({ id, ready }) {
         if (ready) {
           ready(false);
         }
+        if (readyOthers) {
+          readyOthers(false);
+        }
       } else {
         setEmployerValid("");
       }
@@ -63,31 +109,33 @@ function Experience({ id, ready }) {
         if (ready) {
           ready(false);
         }
+        if (readyOthers) {
+          readyOthers(false);
+        }
       } else {
         setDescriptionValid("");
       }
     }
   }, [id, experience]);
 
-  const [titleValid, setTitleValid] = useState("");
-  const [employerValid, setEmployerValid] = useState("");
-  const [startDateValid, setstartDateValid] = useState("");
-  const [endDateValid, setendDateValid] = useState("");
-  const [descriptionValid, setDescriptionValid] = useState("");
-
   function handleTitle(e) {
     const updatedExperience = { ...experience };
     updatedExperience.title = e.target.value;
     setExperience(updatedExperience);
     localStorage.setItem(`title${id}`, e.target.value);
+
     if (e.target.value.length < 2) {
       setTitleValid("თანამდებობა ძალზე მოკლეა");
       if (ready) {
         ready(false);
       }
+      if (readyOthers) {
+        readyOthers(false);
+      }
     } else {
       setTitleValid("");
     }
+
     return true;
   }
 
@@ -99,7 +147,12 @@ function Experience({ id, ready }) {
     console.log(localStorage.getItem(`employer${id}`));
     if (e.target.value.length < 2) {
       setEmployerValid("დამსაქმებელი ძალზე მოკლეა");
-      ready(false);
+      if (ready) {
+        ready(false);
+      }
+      if (readyOthers) {
+        readyOthers(false);
+      }
     } else {
       setEmployerValid("");
     }
@@ -127,7 +180,12 @@ function Experience({ id, ready }) {
 
     if (e.target.value.length < 2) {
       setDescriptionValid("გამოცდილება ძალზე მოკლეა");
-      ready(false);
+      if (ready) {
+        ready(false);
+      }
+      if (readyOthers) {
+        readyOthers(false);
+      }
     } else {
       setDescriptionValid("");
     }

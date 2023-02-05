@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Experience from "../../components/Experience/Experience";
@@ -11,12 +10,13 @@ function ExperiencePage() {
   const navigate = useNavigate();
   const [count, setCount] = useState(1);
   const [childReady, setChildReady] = useState(false);
+  const [readyOthers, setReadyOthers] = useState(true);
 
   if (!localStorage.getItem("expCount")) {
     localStorage.setItem("expCount", 1);
   }
 
-  useEffect(() => {}, [count, childReady]);
+  useEffect(() => {}, [count, readyOthers]);
   return (
     <>
       <div className={styles.wrapper}>
@@ -46,7 +46,14 @@ function ExperiencePage() {
                       />
                     );
                   } else {
-                    return <Experience key={i} value={i} id={i + 1} />;
+                    return (
+                      <Experience
+                        readyOthers={setReadyOthers}
+                        key={i}
+                        value={i}
+                        id={i + 1}
+                      />
+                    );
                   }
                 }
               )}
@@ -73,7 +80,7 @@ function ExperiencePage() {
               ᲣᲙᲐᲜ
             </button>
             <button
-              disabled={!childReady}
+              disabled={!childReady || !readyOthers}
               onClick={() => {
                 navigate("/education");
                 window.scrollTo(0, 0);
