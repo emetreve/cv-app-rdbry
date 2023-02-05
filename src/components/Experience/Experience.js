@@ -4,7 +4,7 @@ import valid from "../../images/valid.png";
 import invalid from "../../images/invalid.png";
 import divider from "../../images/divider.png";
 
-function Experience({ id, ready, readyOthers }) {
+function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
   const [experience, setExperience] = useState({
     title: localStorage.getItem(`title${id}`) || "",
     employer: localStorage.getItem(`employer${id}`) || "",
@@ -34,6 +34,7 @@ function Experience({ id, ready, readyOthers }) {
         readyOthers(false);
       } else {
         readyOthers(true);
+        updateCvSetter(!updateCv);
       }
     }
     if (ready === undefined) {
@@ -51,6 +52,7 @@ function Experience({ id, ready, readyOthers }) {
         setDescriptionValid("");
         //important part
         readyOthers(true);
+        updateCvSetter(!updateCv);
       }
     }
 
@@ -70,6 +72,8 @@ function Experience({ id, ready, readyOthers }) {
         // console.log(1000000, localStorage.getItem(`title${id}`).length);
       } else {
         ready(true);
+        updateCvSetter(!updateCv);
+
         // console.log("setting to true");
         // console.log(100000, localStorage.getItem(`title${id}`).length);
       }
@@ -100,6 +104,7 @@ function Experience({ id, ready, readyOthers }) {
         }
       } else {
         setEmployerValid("");
+        updateCvSetter(!updateCv);
       }
     }
 
@@ -114,6 +119,7 @@ function Experience({ id, ready, readyOthers }) {
         }
       } else {
         setDescriptionValid("");
+        updateCvSetter(!updateCv);
       }
     }
 
@@ -128,6 +134,7 @@ function Experience({ id, ready, readyOthers }) {
         }
       } else {
         setstartDateValid("");
+        updateCvSetter(!updateCv);
       }
     }
   }, [id, experience]);
@@ -148,6 +155,7 @@ function Experience({ id, ready, readyOthers }) {
       }
     } else {
       setTitleValid("");
+      updateCvSetter(!updateCv);
     }
 
     return true;
@@ -169,6 +177,7 @@ function Experience({ id, ready, readyOthers }) {
       }
     } else {
       setEmployerValid("");
+      updateCvSetter(!updateCv);
     }
     return true;
   }
@@ -205,8 +214,10 @@ function Experience({ id, ready, readyOthers }) {
     } else {
       if (param === "start") {
         setstartDateValid("");
+        updateCvSetter(!updateCv);
       } else {
         setendDateValid("");
+        updateCvSetter(!updateCv);
       }
     }
     return true;
@@ -229,6 +240,7 @@ function Experience({ id, ready, readyOthers }) {
       }
     } else {
       setDescriptionValid("");
+      updateCvSetter(!updateCv);
     }
     return true;
   }

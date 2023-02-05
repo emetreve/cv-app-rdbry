@@ -1,9 +1,70 @@
+import { useEffect, useState } from "react";
 import styles from "./Cv.module.css";
 // import logoFoot from "../../images/logoFoot.png";
 import email from "../../images/email.png";
 import phone from "../../images/phone.png";
 
-function Cv({ hidePersonal }) {
+function Cv({ hidePersonal, update }) {
+  const [expData, setExpData] = useState([]);
+  useEffect(() => {
+    let titles = [];
+    let employers = [];
+    let startDates = [];
+    let endDates = [];
+    let descriptions = [];
+    Object.entries(localStorage).forEach(([key, value]) => {
+      if (key.startsWith("title")) {
+        titles.push([Number(key.slice(5)), value]);
+      }
+      if (key.startsWith("employer")) {
+        employers.push([Number(key.slice(8)), value]);
+      }
+      if (key.startsWith("startDate")) {
+        startDates.push([Number(key.slice(9)), value]);
+      }
+      if (key.startsWith("endDate")) {
+        endDates.push([Number(key.slice(7)), value]);
+      }
+      if (key.startsWith("description")) {
+        descriptions.push([Number(key.slice(11)), value]);
+      }
+    });
+
+    const data = [titles, employers, startDates, endDates, descriptions];
+
+    const exp = data.reduce((acc, curr) => {
+      curr.forEach(([id, value]) => {
+        acc[id] = acc[id] || {};
+        acc[id][
+          curr === titles
+            ? "title"
+            : curr === employers
+            ? "employer"
+            : curr === startDates
+            ? "startDate"
+            : curr === endDates
+            ? "endDate"
+            : "description"
+        ] = value;
+      });
+      return acc;
+    }, []);
+
+    const result = Object.values(exp).map((person) => {
+      return [
+        person.title,
+        person.employer,
+        person.startDate,
+        person.endDate,
+        person.description,
+      ];
+    });
+
+    setExpData(result);
+
+    console.log(result);
+  }, [update]);
+
   return (
     <>
       {!hidePersonal ? (
@@ -82,7 +143,7 @@ function Cv({ hidePersonal }) {
             />
           )}
 
-          <div className={styles.experienceWrapper}>experience</div>
+          <div className={styles.experienceWrapper}>{console.log(expData)}</div>
         </div>
       ) : null}
     </>

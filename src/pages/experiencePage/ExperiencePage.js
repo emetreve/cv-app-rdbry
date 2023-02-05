@@ -12,10 +12,12 @@ function ExperiencePage() {
   const [childReady, setChildReady] = useState(false);
   const [readyOthers, setReadyOthers] = useState(true);
 
+  const [updateCv, setUpdateCv] = useState(false);
+
   if (!localStorage.getItem("expCount")) {
     localStorage.setItem("expCount", 1);
   }
-
+  console.log(updateCv);
   useEffect(() => {}, [count, readyOthers]);
   return (
     <>
@@ -43,6 +45,8 @@ function ExperiencePage() {
                         key={i}
                         value={i}
                         id={i + 1}
+                        updateCvSetter={setUpdateCv}
+                        updateCv={updateCv}
                       />
                     );
                   } else {
@@ -52,6 +56,8 @@ function ExperiencePage() {
                         key={i}
                         value={i}
                         id={i + 1}
+                        updateCvSetter={setUpdateCv}
+                        updateCv={updateCv}
                       />
                     );
                   }
@@ -91,7 +97,7 @@ function ExperiencePage() {
             </button>
           </div>
           <div className={styles.rightColumn}>
-            <Cv hidePersonal={false} />
+            <Cv hidePersonal={false} update={updateCv} />
           </div>
         </div>
       </div>
