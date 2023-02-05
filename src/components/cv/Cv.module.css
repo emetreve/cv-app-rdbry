@@ -1,10 +1,10 @@
-.footLogo {
+/* .footLogo {
   position: absolute;
   width: 42px;
   height: 42px;
-  left: 1090px;
-  bottom: 50px;
-}
+  left: 85px;
+  bottom: 100px;
+} */
 
 .name {
   margin-top: 68px;
@@ -34,13 +34,13 @@
   height: 20px;
   width: 20px;
   position: absolute;
-  left: 1045px;
+  left: 85px;
   top: 125px;
 }
 
 .email {
   position: absolute;
-  left: 1075px;
+  left: 115px;
   top: 125px;
   font-style: normal;
   font-weight: 400;
@@ -53,13 +53,13 @@
   height: 20px;
   width: 20px;
   position: absolute;
-  left: 1045px;
+  left: 85px;
   top: 160px;
 }
 
 .phone {
   position: absolute;
-  left: 1075px;
+  left: 115px;
   top: 160px;
   font-style: normal;
   font-weight: 400;
@@ -69,7 +69,7 @@
 }
 
 .aboutTitle {
-  left: 1045px;
+  left: 85px;
   top: 220px;
   position: absolute;
   font-style: normal;
@@ -83,7 +83,7 @@
   font-size: 16px;
   line-height: 22px;
   color: #000000;
-  left: 1045px;
+  left: 85px;
   top: 252px;
   position: absolute;
   width: 450px;
@@ -93,7 +93,7 @@
   position: absolute;
   width: 260px;
   height: 260px;
-  left: 1520px;
+  left: 685px;
   top: 48px;
   border-radius: 133px;
 }

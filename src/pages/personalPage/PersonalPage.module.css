@@ -297,3 +297,11 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.footLogo {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  left: 1045px;
+  bottom: 100px;
+}

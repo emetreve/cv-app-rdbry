@@ -1,5 +1,5 @@
 import styles from "./Cv.module.css";
-import logoFoot from "../../images/logoFoot.png";
+// import logoFoot from "../../images/logoFoot.png";
 import email from "../../images/email.png";
 import phone from "../../images/phone.png";
 
@@ -7,7 +7,7 @@ function Cv({ hidePersonal }) {
   return (
     <>
       {!hidePersonal ? (
-        <>
+        <div style={{ position: "relative" }}>
           <div style={{ display: "flex", flexDirection: "row" }}>
             {localStorage.getItem("name") && (
               <p className={styles.name}>{`${localStorage
@@ -63,8 +63,8 @@ function Cv({ hidePersonal }) {
             />
           )}
 
-          <img src={logoFoot} className={styles.footLogo} alt="foot logo" />
-        </>
+          {/* <img src={logoFoot} className={styles.footLogo} alt="foot logo" /> */}
+        </div>
       ) : null}
     </>
   );

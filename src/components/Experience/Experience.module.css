@@ -43,11 +43,12 @@
 }
 
 .checkMark {
-  height: 22px;
-  width: 22px;
+  height: 21px;
+  width: 21px;
   position: absolute;
-  top: 318px;
+  top: 315px;
   left: 315px;
+  background-color: white;
 }
 
 .checkMarkEnd {
@@ -56,6 +57,7 @@
   position: absolute;
   top: 40px;
   left: 315px;
+  background-color: white;
 }
 
 .hint {

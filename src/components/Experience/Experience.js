@@ -105,7 +105,7 @@ function Experience({ id, ready, readyOthers }) {
 
     if (localStorage.getItem(`description${id}`)) {
       if (localStorage.getItem(`description${id}`).length < 2) {
-        setDescriptionValid("დამსაქმებელი ძალზე მოკლეა");
+        setDescriptionValid("აღწერა ძალზე მოკლეა");
         if (ready) {
           ready(false);
         }
@@ -114,6 +114,20 @@ function Experience({ id, ready, readyOthers }) {
         }
       } else {
         setDescriptionValid("");
+      }
+    }
+
+    if (localStorage.getItem(`startDate${id}`)) {
+      if (localStorage.getItem(`startDate${id}`).length < 2) {
+        setstartDateValid("დაწყების რიცხვი აუცილებელია");
+        if (ready) {
+          ready(false);
+        }
+        if (readyOthers) {
+          readyOthers(false);
+        }
+      } else {
+        setstartDateValid("");
       }
     }
   }, [id, experience]);
@@ -169,6 +183,33 @@ function Experience({ id, ready, readyOthers }) {
       `${param}Date${id}`,
       `${document.getElementById(`${param}Date${id}`).value}`
     );
+
+    if (String(document.getElementById(`${param}Date${id}`).value) < 2) {
+      if (param === "start") {
+        setstartDateValid("თარიღი აუცილებელია");
+        if (ready) {
+          ready(false);
+        }
+        if (readyOthers) {
+          readyOthers(false);
+        }
+      } else {
+        setendDateValid("თარიღი აუცილებელია");
+        if (ready) {
+          ready(false);
+        }
+        if (readyOthers) {
+          readyOthers(false);
+        }
+      }
+    } else {
+      if (param === "start") {
+        setstartDateValid("");
+      } else {
+        setendDateValid("");
+      }
+    }
+    return true;
   }
 
   function handleDescription(e) {
