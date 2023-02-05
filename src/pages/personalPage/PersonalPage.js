@@ -423,6 +423,7 @@ function PersonalPage() {
                 nameValid.length > 1 ||
                 surnameValid.length > 1
               }
+              hideExperience={true}
             />
             <img src={logoFoot} className={styles.footLogo} alt="foot logo" />
           </div>

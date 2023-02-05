@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "./Cv.module.css";
-// import logoFoot from "../../images/logoFoot.png";
 import email from "../../images/email.png";
 import phone from "../../images/phone.png";
+import divider from "../../images/divider.png";
 
-function Cv({ hidePersonal, update }) {
+function Cv({ hidePersonal, hideExperience, update }) {
   const [expData, setExpData] = useState([]);
   useEffect(() => {
     let titles = [];
@@ -61,13 +61,11 @@ function Cv({ hidePersonal, update }) {
     });
 
     setExpData(result);
-
-    console.log(result);
   }, [update]);
 
   return (
     <>
-      {!hidePersonal ? (
+      {true ? (
         <div style={{}}>
           <div style={{ display: "flex", flexDirection: "row" }}>
             {localStorage.getItem("name") && (
@@ -142,8 +140,44 @@ function Cv({ hidePersonal, update }) {
               alt="profile avatar "
             />
           )}
+          <img
+            style={hidePersonal ? { display: "none" } : null}
+            src={divider}
+            className={styles.divider}
+            alt="divider"
+          />
 
-          <div className={styles.experienceWrapper}>{console.log(expData)}</div>
+          <div className={styles.experienceWrapper}>
+            {console.log(111, expData.length === 0)}
+            {!hideExperience ? (
+              <h2 className={styles.aboutTitle}>ᲒᲐᲛᲝᲪᲓᲘᲚᲔᲑᲐ</h2>
+            ) : null}
+            {expData &&
+              expData.map((each, i) => {
+                return (
+                  <div key={i} style={{ width: "860px" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        marginTop: "30px",
+                      }}
+                    >
+                      <b>
+                        <p className={styles.title}>{each[0]}, </p>
+                      </b>
+                      <b>
+                        <p className={styles.employer}> &nbsp;{each[1]}</p>
+                      </b>
+                    </div>
+                    <p className={styles.dates}>
+                      {each[2]} - {each[3]}
+                    </p>
+                    <p className={styles.description}>{each[4]}</p>
+                  </div>
+                );
+              })}
+          </div>
         </div>
       ) : null}
     </>
