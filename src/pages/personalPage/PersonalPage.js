@@ -6,7 +6,6 @@ import back from "../../images/back.png";
 import line from "../../images/line.png";
 import valid from "../../images/valid.png";
 import invalid from "../../images/invalid.png";
-import logoFoot from "../../images/logoFoot.png";
 
 function PersonalPage() {
   const inputRef = useRef(null);
@@ -425,7 +424,6 @@ function PersonalPage() {
               }
               hideExperience={true}
             />
-            <img src={logoFoot} className={styles.footLogo} alt="foot logo" />
           </div>
         </div>
       </div>

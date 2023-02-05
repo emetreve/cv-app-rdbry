@@ -3,6 +3,7 @@ import styles from "./Cv.module.css";
 import email from "../../images/email.png";
 import phone from "../../images/phone.png";
 import divider from "../../images/divider.png";
+import logoFoot from "../../images/logoFoot.png";
 
 function Cv({ hidePersonal, hideExperience, update }) {
   const [expData, setExpData] = useState([]);
@@ -64,7 +65,7 @@ function Cv({ hidePersonal, hideExperience, update }) {
   }, [update]);
 
   return (
-    <>
+    <div style={{ position: "relative", minHeight: "910px" }}>
       {true ? (
         <div style={{}}>
           <div style={{ display: "flex", flexDirection: "row" }}>
@@ -180,7 +181,8 @@ function Cv({ hidePersonal, hideExperience, update }) {
           </div>
         </div>
       ) : null}
-    </>
+      <img src={logoFoot} className={styles.footLogo} alt="foot logo" />
+    </div>
   );
 }
 export default Cv;
