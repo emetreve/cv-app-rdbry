@@ -4,11 +4,43 @@ import valid from "../../images/valid.png";
 import invalid from "../../images/invalid.png";
 import divider from "../../images/divider.png";
 
-function Experience({ id }) {
+function Experience({ id, ready }) {
+  const [experience, setExperience] = useState({
+    title: localStorage.getItem(`title${id}`) || "",
+    employer: localStorage.getItem(`employer${id}`) || "",
+    startDate: localStorage.getItem(`startDate${id}`) || "",
+    endDate: localStorage.getItem(`endDate${id}`) || "",
+    description: localStorage.getItem(`description${id}`) || "",
+  });
+
   useEffect(() => {
+    if (ready) {
+      if (
+        !localStorage.getItem(`title${id}`) ||
+        localStorage.getItem(`title${id}`).length < 2 ||
+        !localStorage.getItem(`employer${id}`) ||
+        localStorage.getItem(`employer${id}`).length < 2 ||
+        !localStorage.getItem(`startDate${id}`) ||
+        !localStorage.getItem(`endDate${id}`) ||
+        !localStorage.getItem(`description${id}`) ||
+        localStorage.getItem(`description${id}`).length < 2
+      ) {
+        ready(false);
+        // console.log(111, "setting to false");
+        // console.log(1000000, localStorage.getItem(`title${id}`).length);
+      } else {
+        ready(true);
+        // console.log("setting to true");
+        // console.log(100000, localStorage.getItem(`title${id}`).length);
+      }
+    }
+
     if (localStorage.getItem(`title${id}`)) {
       if (localStorage.getItem(`title${id}`).length < 2) {
         setTitleValid("სახელი ძალზე მოკლეა");
+        if (ready) {
+          ready(false);
+        }
       } else {
         setTitleValid("");
       }
@@ -17,6 +49,9 @@ function Experience({ id }) {
     if (localStorage.getItem(`employer${id}`)) {
       if (localStorage.getItem(`employer${id}`).length < 2) {
         setEmployerValid("დამსაქმებელი ძალზე მოკლეა");
+        if (ready) {
+          ready(false);
+        }
       } else {
         setEmployerValid("");
       }
@@ -25,18 +60,14 @@ function Experience({ id }) {
     if (localStorage.getItem(`description${id}`)) {
       if (localStorage.getItem(`description${id}`).length < 2) {
         setDescriptionValid("დამსაქმებელი ძალზე მოკლეა");
+        if (ready) {
+          ready(false);
+        }
       } else {
         setDescriptionValid("");
       }
     }
-  }, [id]);
-  const [experience, setExperience] = useState({
-    title: localStorage.getItem(`title${id}`) || "",
-    employer: localStorage.getItem(`employer${id}`) || "",
-    startDate: localStorage.getItem(`startDate${id}`) || "",
-    endDate: localStorage.getItem(`endDate${id}`) || "",
-    description: localStorage.getItem(`description${id}`) || "",
-  });
+  }, [id, experience]);
 
   const [titleValid, setTitleValid] = useState("");
   const [employerValid, setEmployerValid] = useState("");
@@ -51,6 +82,9 @@ function Experience({ id }) {
     localStorage.setItem(`title${id}`, e.target.value);
     if (e.target.value.length < 2) {
       setTitleValid("თანამდებობა ძალზე მოკლეა");
+      if (ready) {
+        ready(false);
+      }
     } else {
       setTitleValid("");
     }
@@ -65,6 +99,7 @@ function Experience({ id }) {
     console.log(localStorage.getItem(`employer${id}`));
     if (e.target.value.length < 2) {
       setEmployerValid("დამსაქმებელი ძალზე მოკლეა");
+      ready(false);
     } else {
       setEmployerValid("");
     }
@@ -92,6 +127,7 @@ function Experience({ id }) {
 
     if (e.target.value.length < 2) {
       setDescriptionValid("გამოცდილება ძალზე მოკლეა");
+      ready(false);
     } else {
       setDescriptionValid("");
     }
