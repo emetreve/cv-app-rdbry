@@ -65,7 +65,7 @@ function Cv({ hidePersonal, hideExperience, update }) {
   }, [update]);
 
   return (
-    <div style={{ position: "relative", minHeight: "910px" }}>
+    <div style={{ position: "relative", minHeight: "900px" }}>
       {true ? (
         <div style={{}}>
           <div style={{ display: "flex", flexDirection: "row" }}>
@@ -165,14 +165,16 @@ function Cv({ hidePersonal, hideExperience, update }) {
                       }}
                     >
                       <b>
-                        <p className={styles.title}>{each[0]}, </p>
+                        <p className={styles.title}>
+                          {each[0] && each[0].concat(", ")}
+                        </p>
                       </b>
                       <b>
-                        <p className={styles.employer}> &nbsp;{each[1]}</p>
+                        <p className={styles.employer}>&nbsp;{each[1]}</p>
                       </b>
                     </div>
                     <p className={styles.dates}>
-                      {each[2]} - {each[3]}
+                      {each[2] && each[2].concat(" - ")} {each[3]}
                     </p>
                     <p className={styles.description}>{each[4]}</p>
                   </div>

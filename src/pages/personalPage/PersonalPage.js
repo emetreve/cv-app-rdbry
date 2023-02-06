@@ -347,7 +347,7 @@ function PersonalPage() {
                   style={emailValid ? { color: "red" } : null}
                   className={styles.hint}
                 >
-                  {emailValid || "მინიმუმ 2 ასო, ქართული ასოები"}
+                  {emailValid || "უნდა მთავრდებოდეს @redberry.ge-ით"}
                 </p>
               </div>
 
@@ -383,7 +383,8 @@ function PersonalPage() {
                   style={phoneValid ? { color: "red" } : null}
                   className={styles.hint}
                 >
-                  {phoneValid || "მინიმუმ 2 ასო, ქართული ასოები"}
+                  {phoneValid ||
+                    "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს"}
                 </p>
               </div>
             </div>
