@@ -204,7 +204,6 @@ function Cv({ hidePersonal, hideExperience, update, hideEducation }) {
           />
 
           <div className={styles.experienceWrapper}>
-            {console.log(111, expData.length === 0)}
             {expData.length > 0 ? (
               <h2 className={styles.aboutTitle}>ᲒᲐᲛᲝᲪᲓᲘᲚᲔᲑᲐ</h2>
             ) : null}
@@ -272,7 +271,6 @@ function Cv({ hidePersonal, hideExperience, update, hideEducation }) {
                 );
               })}
           </div>
-          {console.log(eduData)}
         </div>
       ) : null}
       <img src={logoFoot} className={styles.footLogo} alt="foot logo" />

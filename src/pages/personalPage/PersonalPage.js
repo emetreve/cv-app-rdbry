@@ -141,12 +141,9 @@ function PersonalPage() {
   }
 
   function handleImageCapture(e) {
-    e.preventDefault();
     const file = e.target.files[0];
     if (e.target.files && file) {
-      //   handleFile(e.target.files);
       const pickReader = new FileReader();
-
       pickReader.addEventListener("load", function (e) {
         const picFile = e.target;
         const updatedPersonal = { ...personal };
@@ -155,12 +152,9 @@ function PersonalPage() {
         setPersonal(updatedPersonal);
       });
       pickReader.readAsDataURL(file);
-
       setPictureValid("");
       setPictureName(file.name);
       localStorage.setItem("pictureName", file.name);
-
-      //   window.location.reload(true);
     }
   }
 
@@ -204,7 +198,6 @@ function PersonalPage() {
             <p className={styles.title}>ᲞᲘᲠᲐᲓᲘ ᲘᲜᲤᲝ</p>
             <p className={styles.pageCount}>1/3</p>
             <img src={line} className={styles.divider} alt="divider" />
-
             <div className={styles.nameSection}>
               <p style={nameValid ? { color: "red" } : null}>სახელი</p>
               <input

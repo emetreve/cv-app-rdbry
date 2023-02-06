@@ -178,6 +178,21 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     setExperience(updatedExperience);
     localStorage.setItem(`degree${id}`, e.target.value);
 
+    //get the IDs
+    fetch("https://resume.redberryinternship.ge/api/degrees")
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        const match = data.filter((item) => item.title === e.target.value);
+        localStorage.setItem(`idDegree${id}`, match[0].id);
+        console.log(300000, match[0]);
+        return match;
+      });
+    //end of getting the IDs
+
     if (e.target.value.length < 2) {
       setDegreeValid("invalid");
     } else {
