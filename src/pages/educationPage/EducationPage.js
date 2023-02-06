@@ -28,7 +28,7 @@ function EducationPage() {
           <div className={styles.leftColumn}>
             <img
               src={back}
-              onClick={() => navigate("/personal")}
+              onClick={() => navigate("/experience")}
               className={styles.goBack}
               alt="go back"
             />
@@ -80,7 +80,7 @@ function EducationPage() {
 
             <button
               onClick={() => {
-                navigate("/personal");
+                navigate("/experience");
                 window.scrollTo(0, 0);
               }}
               className={styles.backBtn}

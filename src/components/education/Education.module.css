@@ -1,0 +1,125 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 30px;
+}
+
+.titlelSection,
+.institutelSection {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.inputItemLong {
+  box-sizing: border-box;
+  width: 770px;
+  height: 48px;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.checkMarkLongEmployer {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 38px;
+  left: 730px;
+}
+
+.checkMarkDegree {
+  height: 21px;
+  width: 21px;
+  position: absolute;
+  top: 173px;
+  left: 332px;
+  background-color: white;
+}
+
+.checkMarkDate {
+  height: 21px;
+  width: 21px;
+  position: absolute;
+  top: 173px;
+  left: 730px;
+  background-color: white;
+}
+
+.hint {
+  font-family: "Helvetica Neue";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  color: #2e2e2e;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.graduationDateSection {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.inputDate {
+  display: flex;
+  height: 48px;
+  width: 320px;
+  align-items: flex-start;
+  align-items: center;
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+  padding-left: 14px;
+  padding-right: 20px;
+}
+
+.select {
+  display: flex;
+  height: 50px;
+  width: 358px;
+  align-items: flex-start;
+  align-items: center;
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+  padding-left: 14px;
+  padding-right: 20px;
+}
+
+.descriptionWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.textArea {
+  width: 749px;
+  height: 123px;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+}
+
+.divider {
+  position: absolute;
+  width: 768px;
+  height: 1px;
+  left: 0;
+  top: 500px;
+}
