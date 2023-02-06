@@ -26,19 +26,19 @@ function EducationPage() {
   let endDates = [];
   let descriptions = [];
   Object.entries(localStorage).forEach(([key, value]) => {
-    if (key.startsWith("title")) {
+    if (key.startsWith("title") && value !== "") {
       titles.push([Number(key.slice(5)), value]);
     }
-    if (key.startsWith("employer")) {
+    if (key.startsWith("employer") && value !== "") {
       employers.push([Number(key.slice(8)), value]);
     }
-    if (key.startsWith("startDate")) {
+    if (key.startsWith("startDate") && value !== "") {
       startDates.push([Number(key.slice(9)), value]);
     }
-    if (key.startsWith("endDate")) {
+    if (key.startsWith("endDate") && value !== "") {
       endDates.push([Number(key.slice(7)), value]);
     }
-    if (key.startsWith("description")) {
+    if (key.startsWith("description") && value !== "") {
       descriptions.push([Number(key.slice(11)), value]);
     }
   });
@@ -70,16 +70,16 @@ function EducationPage() {
   let eduDescriptions = [];
 
   Object.entries(localStorage).forEach(([key, value]) => {
-    if (key.startsWith("institute")) {
+    if (key.startsWith("institute") && value !== "") {
       institutes.push([Number(key.slice(9)), value]);
     }
-    if (key.startsWith("idDegree")) {
+    if (key.startsWith("idDegree") && value !== "") {
       degrees.push([Number(key.slice(8)), value]);
     }
-    if (key.startsWith("graduation")) {
+    if (key.startsWith("graduation") && value !== "") {
       graduations.push([Number(key.slice(10)), value]);
     }
-    if (key.startsWith("eduDescription")) {
+    if (key.startsWith("eduDescription") && value !== "") {
       eduDescriptions.push([Number(key.slice(14)), value]);
     }
   });
