@@ -205,7 +205,7 @@ function Cv({ hidePersonal, hideExperience, update, hideEducation }) {
 
           <div className={styles.experienceWrapper}>
             {console.log(111, expData.length === 0)}
-            {!hideExperience ? (
+            {expData.length > 0 ? (
               <h2 className={styles.aboutTitle}>ᲒᲐᲛᲝᲪᲓᲘᲚᲔᲑᲐ</h2>
             ) : null}
             {expData &&
@@ -235,13 +235,18 @@ function Cv({ hidePersonal, hideExperience, update, hideEducation }) {
                   </div>
                 );
               })}
+            {expData.length > 0 && (
+              <img src={divider} className={styles.expDivider} alt="divider" />
+            )}
           </div>
 
           <div className={styles.experienceWrapper}>
-            {!hideEducation ? (
-              <h2 className={styles.aboutTitle}>ᲒᲐᲜᲐᲗᲚᲔᲑᲐ</h2>
+            {eduData.length > 0 ? (
+              <h2 className={styles.aboutTitle} style={{ marginTop: "40px" }}>
+                ᲒᲐᲜᲐᲗᲚᲔᲑᲐ
+              </h2>
             ) : null}
-            {expData &&
+            {eduData &&
               eduData.map((eachEdu, i) => {
                 return (
                   <div key={i} style={{ width: "860px" }}>

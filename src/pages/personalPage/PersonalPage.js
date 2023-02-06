@@ -427,6 +427,7 @@ function PersonalPage() {
                 surnameValid.length > 1
               }
               hideExperience={true}
+              hideEducation={true}
             />
           </div>
         </div>

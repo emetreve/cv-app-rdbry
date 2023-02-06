@@ -89,6 +89,14 @@
   margin-bottom: 10px;
 }
 
+.expDivider {
+  width: 760px;
+  height: 0.5px;
+  margin-left: 85px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
 .title {
   margin-left: 85px;
   font-size: 17px;

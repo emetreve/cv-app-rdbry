@@ -100,7 +100,7 @@ function ExperiencePage() {
             </button>
           </div>
           <div className={styles.rightColumn}>
-            <Cv hidePersonal={false} update={updateCv} />
+            <Cv hidePersonal={false} update={updateCv} hideEducation={true} />
           </div>
         </div>
       </div>
