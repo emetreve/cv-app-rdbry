@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import getDegrees from "../../http/getDegrees";
 import styles from "./Education.module.css";

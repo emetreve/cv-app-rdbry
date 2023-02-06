@@ -194,7 +194,10 @@ function PersonalPage() {
           <div className={styles.leftColumn}>
             <img
               src={back}
-              onClick={() => navigate("/")}
+              onClick={() => {
+                localStorage.clear();
+                navigate("/");
+              }}
               className={styles.goBack}
               alt="go back"
             />

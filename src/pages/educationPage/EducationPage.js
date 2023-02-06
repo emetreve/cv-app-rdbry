@@ -28,7 +28,10 @@ function EducationPage() {
           <div className={styles.leftColumn}>
             <img
               src={back}
-              onClick={() => navigate("/experience")}
+              onClick={() => {
+                localStorage.clear();
+                navigate("/");
+              }}
               className={styles.goBack}
               alt="go back"
             />
