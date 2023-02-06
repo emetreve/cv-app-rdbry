@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./ExperiencePage.module.css";
-import Experience from "../../components/Experience/Experience";
+import Education from "../../components/education/Education";
+import styles from "./EducationPage.module.css";
+
 import back from "../../images/back.png";
 import line from "../../images/line.png";
 import Cv from "../../components/cv/Cv";
 
-function ExperiencePage() {
+function EducationPage() {
   const navigate = useNavigate();
   const [count, setCount] = useState(1);
   const [childReady, setChildReady] = useState(false);
@@ -14,11 +15,12 @@ function ExperiencePage() {
 
   const [updateCv, setUpdateCv] = useState(false);
 
-  if (!localStorage.getItem("expCount")) {
-    localStorage.setItem("expCount", 1);
+  if (!localStorage.getItem("eduCount")) {
+    localStorage.setItem("eduCount", 1);
   }
   console.log(updateCv);
   useEffect(() => {}, [count, readyOthers]);
+
   return (
     <>
       <div className={styles.wrapper}>
@@ -30,17 +32,17 @@ function ExperiencePage() {
               className={styles.goBack}
               alt="go back"
             />
-            <p className={styles.title}>ᲒᲐᲛᲝᲪᲓᲘᲚᲔᲑᲐ</p>
-            <p className={styles.pageCount}>2/3</p>
+            <p className={styles.title}>ᲒᲐᲜᲐᲗᲚᲔᲑᲐ</p>
+            <p className={styles.pageCount}>3/3</p>
             <img src={line} className={styles.divider} alt="divider" />
-            <div className={styles.experienceComponentWrapper}>
-              {console.log(888, Number(localStorage.getItem("expCount")))}
+            <div className={styles.educationComponentWrapper}>
+              {console.log(888, Number(localStorage.getItem("eduCount")))}
               {Array.from(
-                { length: Number(localStorage.getItem("expCount")) || count },
+                { length: Number(localStorage.getItem("eduCount")) || count },
                 (_, i) => {
                   if (i === 0) {
                     return (
-                      <Experience
+                      <Education
                         ready={setChildReady}
                         key={i}
                         value={i}
@@ -51,7 +53,7 @@ function ExperiencePage() {
                     );
                   } else {
                     return (
-                      <Experience
+                      <Education
                         readyOthers={setReadyOthers}
                         key={i}
                         value={i}
@@ -68,12 +70,12 @@ function ExperiencePage() {
             <button
               className={styles.addButton}
               onClick={() => {
-                const current = Number(localStorage.getItem("expCount"));
-                localStorage.setItem("expCount", current + 1);
+                const current = Number(localStorage.getItem("eduCount"));
+                localStorage.setItem("eduCount", current + 1);
                 setCount((prev) => prev + 1);
               }}
             >
-              მეტი გამოცდილების დამატება
+              სხვა სასწავლებლის დამატება
             </button>
 
             <button
@@ -87,13 +89,13 @@ function ExperiencePage() {
             </button>
             <button
               disabled={!childReady || !readyOthers}
-              onClick={() => {
-                navigate("/education");
-                window.scrollTo(0, 0);
-              }}
+              //   onClick={() => {
+              //     navigate("/education");
+              //     window.scrollTo(0, 0);
+              //   }}
               className={styles.nextBtn}
             >
-              ᲨᲔᲛᲓᲔᲒᲘ
+              ᲓᲐᲡᲠᲣᲚᲔᲑᲐ
             </button>
           </div>
           <div className={styles.rightColumn}>
@@ -105,4 +107,4 @@ function ExperiencePage() {
   );
 }
 
-export default ExperiencePage;
+export default EducationPage;
