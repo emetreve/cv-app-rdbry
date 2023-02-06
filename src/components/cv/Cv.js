@@ -5,8 +5,11 @@ import phone from "../../images/phone.png";
 import divider from "../../images/divider.png";
 import logoFoot from "../../images/logoFoot.png";
 
-function Cv({ hidePersonal, hideExperience, update }) {
+function Cv({ hidePersonal, hideExperience, update, hideEducation }) {
   const [expData, setExpData] = useState([]);
+  const [eduData, setEduData] = useState([]);
+
+  //handling experience data
   useEffect(() => {
     let titles = [];
     let employers = [];
@@ -62,6 +65,58 @@ function Cv({ hidePersonal, hideExperience, update }) {
     });
 
     setExpData(result);
+  }, [update]);
+
+  //handling education data
+  useEffect(() => {
+    let institutes = [];
+    let degrees = [];
+    let graduations = [];
+    let eduDescriptions = [];
+
+    Object.entries(localStorage).forEach(([key, value]) => {
+      if (key.startsWith("institute")) {
+        institutes.push([Number(key.slice(9)), value]);
+      }
+      if (key.startsWith("degree")) {
+        degrees.push([Number(key.slice(6)), value]);
+      }
+      if (key.startsWith("graduation")) {
+        graduations.push([Number(key.slice(10)), value]);
+      }
+      if (key.startsWith("eduDescription")) {
+        eduDescriptions.push([Number(key.slice(14)), value]);
+      }
+    });
+
+    const dataEdu = [institutes, degrees, graduations, eduDescriptions];
+
+    const expEdu = dataEdu.reduce((acc, curr) => {
+      curr.forEach(([id, value]) => {
+        acc[id] = acc[id] || {};
+        acc[id][
+          curr === institutes
+            ? "institute"
+            : curr === degrees
+            ? "degree"
+            : curr === graduations
+            ? "graduation"
+            : "eduDescription"
+        ] = value;
+      });
+      return acc;
+    }, []);
+
+    const resultEdu = Object.values(expEdu).map((person) => {
+      return [
+        person.institute,
+        person.degree,
+        person.graduation,
+        person.eduDescription,
+      ];
+    });
+
+    setEduData(resultEdu);
   }, [update]);
 
   return (
@@ -181,6 +236,38 @@ function Cv({ hidePersonal, hideExperience, update }) {
                 );
               })}
           </div>
+
+          <div className={styles.experienceWrapper}>
+            {!hideEducation ? (
+              <h2 className={styles.aboutTitle}>ᲒᲐᲜᲐᲗᲚᲔᲑᲐ</h2>
+            ) : null}
+            {expData &&
+              eduData.map((eachEdu, i) => {
+                return (
+                  <div key={i} style={{ width: "860px" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        marginTop: "30px",
+                      }}
+                    >
+                      <b>
+                        <p className={styles.title}>
+                          {eachEdu[0] && eachEdu[0].concat(", ")}
+                        </p>
+                      </b>
+                      <b>
+                        <p className={styles.employer}>&nbsp;{eachEdu[1]}</p>
+                      </b>
+                    </div>
+                    <p className={styles.dates}>{eachEdu[2]}</p>
+                    <p className={styles.description}>{eachEdu[3]}</p>
+                  </div>
+                );
+              })}
+          </div>
+          {console.log(eduData)}
         </div>
       ) : null}
       <img src={logoFoot} className={styles.footLogo} alt="foot logo" />

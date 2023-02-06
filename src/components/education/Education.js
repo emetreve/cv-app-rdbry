@@ -10,7 +10,7 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     institute: localStorage.getItem(`institute${id}`) || "",
     degree: localStorage.getItem(`degree${id}`) || "",
     graduation: localStorage.getItem(`graduation${id}`) || "",
-    descriptionEdu: localStorage.getItem(`descriptionEdu${id}`) || "",
+    descriptionEdu: localStorage.getItem(`eduDescription${id}`) || "",
   });
 
   const [instituteValid, setInstituteValid] = useState("");
@@ -32,8 +32,8 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
         localStorage.getItem(`degree${id}`).length < 2 ||
         !localStorage.getItem(`graduation${id}`) ||
         localStorage.getItem(`graduation${id}`).length < 2 ||
-        !localStorage.getItem(`descriptionEdu${id}`) ||
-        localStorage.getItem(`descriptionEdu${id}`).length < 2
+        !localStorage.getItem(`eduDescription${id}`) ||
+        localStorage.getItem(`eduDescription${id}`).length < 2
       ) {
         readyOthers(false);
       } else {
@@ -63,8 +63,8 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
         !localStorage.getItem(`institute${id}`) ||
         localStorage.getItem(`institute${id}`).length < 2 ||
         !localStorage.getItem(`graduation${id}`) ||
-        !localStorage.getItem(`descriptionEdu${id}`) ||
-        localStorage.getItem(`descriptionEdu${id}`).length < 2
+        !localStorage.getItem(`eduDescription${id}`) ||
+        localStorage.getItem(`eduDescription${id}`).length < 2
       ) {
         ready(false);
         // console.log(111, "setting to false");
@@ -93,8 +93,8 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
       }
     }
 
-    if (localStorage.getItem(`descriptionEdu${id}`)) {
-      if (localStorage.getItem(`descriptionEdu${id}`).length < 2) {
+    if (localStorage.getItem(`eduDescription${id}`)) {
+      if (localStorage.getItem(`eduDescription${id}`).length < 2) {
         setDescriptionEduValid("აღწერა ძალზე მოკლეა");
         if (ready) {
           ready(false);
@@ -186,7 +186,7 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
   }
 
   function handleDescription(e) {
-    localStorage.setItem(`descriptionEdu${id}`, e.target.value);
+    localStorage.setItem(`eduDescription${id}`, e.target.value);
 
     const updatedExperience = { ...experience };
     updatedExperience.descriptionEdu = e.target.value;
@@ -329,7 +329,7 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
           className={styles.textArea}
           placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
           value={
-            localStorage.getItem(`descriptionEdu${id}`) ||
+            localStorage.getItem(`eduDescription${id}`) ||
             experience.descriptionEdu ||
             ""
           }

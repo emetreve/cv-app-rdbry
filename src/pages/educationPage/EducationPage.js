@@ -99,7 +99,7 @@ function EducationPage() {
             </button>
           </div>
           <div className={styles.rightColumn}>
-            <Cv hidePersonal={false} update={updateCv} />
+            <Cv hidePersonal={false} update={updateCv} hideEducation={false} />
           </div>
         </div>
       </div>
