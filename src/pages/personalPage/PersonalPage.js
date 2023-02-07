@@ -28,6 +28,8 @@ function PersonalPage() {
         !/^[ა-ჰ\s!@#$%^&*()_+=]+$/.test(localStorage.getItem("name"))
       ) {
         setNameValid("გამოიყენე ქართული ასოები");
+      } else if (/[\s]/.test(localStorage.getItem("name"))) {
+        setNameValid("სფეისების გარეშე შეიყვანეთ");
       } else {
         setNameValid("");
       }
@@ -104,6 +106,8 @@ function PersonalPage() {
       setNameValid("სახელი ძალზე მოკლეა");
     } else if (!/^[ა-ჰ\s!@#$%^&*()_+=]+$/.test(e.target.value)) {
       setNameValid("გამოიყენე ქართული ასოები");
+    } else if (/[\s]/.test(localStorage.getItem("name"))) {
+      setNameValid("სფეისების გარეშე შეიყვანეთ");
     } else {
       setNameValid("");
     }
@@ -119,6 +123,8 @@ function PersonalPage() {
       setSurnameValid("გვარი ძალზე მოკლეა");
     } else if (!/^[ა-ჰ\s!@#$%^&*()_+=]+$/.test(e.target.value)) {
       setSurnameValid("გამოიყენე ქართული ასოები");
+    } else if (/[\s]/.test(localStorage.getItem("surname"))) {
+      setSurnameValid("სფეისების გარეშე შეიყვანეთ");
     } else {
       setSurnameValid("");
     }

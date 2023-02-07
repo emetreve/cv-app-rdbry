@@ -174,15 +174,16 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     return true;
   }
 
+  //option's helper function
   const toggleDropdown = () => {
     setOpen(!open);
   };
-
+  //option's helper function
   const handleDropdown = (idDegree, title) => {
     setOpen(false);
     handleDegree(idDegree, title);
   };
-
+  //option's main handler
   function handleDegree(idDegree, title) {
     const updatedExperience = { ...experience };
     updatedExperience.degree = title;
@@ -191,21 +192,6 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
 
     console.log(id, title);
     localStorage.setItem(`idDegree${id}`, idDegree);
-
-    //get the IDs
-    // fetch("https://resume.redberryinternship.ge/api/degrees")
-    //   .then((response) => {
-    //     if (response.ok) {
-    //       return response.json();
-    //     }
-    //   })
-    //   .then((data) => {
-    //     const match = data.filter((item) => item.idDegree === idDegree);
-    //     // const match = data.filter((item) => item.title === e.target.value);
-    //     // console.log(300000, match[0]);
-    //     return match;
-    //   });
-    //end of getting the IDs
 
     if (title.length < 2) {
       setDegreeValid("invalid");
@@ -279,26 +265,6 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
       <div style={{ display: "flex", flexDirection: "row", gap: "54px" }}>
         <div className={styles.graduationDateSection}>
           <p style={degreeValid ? { color: "red" } : null}>ხარისხი</p>
-          {/* <select
-            id="select"
-            className={styles.select}
-            onChange={handleDegree}
-            value={
-              experience.degree || localStorage.getItem(`degree${id}`) || ""
-            }
-            style={degreeValid ? { border: "2px red solid" } : null}
-          >
-            <option hidden>
-              {experience.degree ||
-                localStorage.getItem(`degree${id}`) ||
-                "აირჩიეთ ხარისხი"}
-            </option>
-
-            {dataAPI.length > 0 &&
-              dataAPI.map((each) => {
-                return <option key={each.id}>{each.title}</option>;
-              })}
-          </select> */}
 
           <div className={styles.customSelect} onClick={toggleDropdown}>
             <div className={styles.selectedOption}>
