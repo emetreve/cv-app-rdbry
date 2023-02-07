@@ -155,8 +155,8 @@ function EducationPage() {
     axios
       .post("https://resume.redberryinternship.ge/api/cvs", formData)
       .then((response) => {
-        console.log("EDUAPAGE, response: ", response);
-        setServerData(response);
+        console.log("EDUAPAGE, response: ", response.data);
+        setServerData(response.data);
       })
       .catch((error) => {
         console.error("There was an error!", error.response.data);

@@ -1,3 +1,56 @@
+.back {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 48px;
+  top: 45px;
+  color: #f9f9f9;
+  margin-top: 5px;
+  z-index: 2;
+}
+
+.back:hover {
+  cursor: pointer;
+}
+
+.wrapper {
+  position: relative;
+  padding-left: 400px;
+  padding-bottom: 100px;
+}
+
+.banner {
+  z-index: 2;
+  position: absolute;
+  right: 100px;
+  box-sizing: border-box;
+  padding: 36px 30px 30px;
+  position: absolute;
+  width: 427px;
+  height: 165px;
+  left: 1423px;
+  top: 57px;
+  background: #ffffff;
+  border: 1px solid #e4e4e4;
+  box-shadow: 0px 4px 28px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 43px;
+  color: #1a1a1a;
+}
+
+.close {
+  position: absolute;
+  height: 18px;
+  right: 22px;
+  top: 25px;
+}
+.close:hover {
+  cursor: pointer;
+}
+
 .name {
   margin-top: 68px;
   margin-left: 85px;
@@ -76,9 +129,10 @@
   position: absolute;
   width: 260px;
   height: 260px;
-  right: 100px;
-  top: 48px;
+  right: 117px;
+  top: 40px;
   border-radius: 133px;
+  background-color: red;
 }
 
 .divider {
@@ -93,7 +147,7 @@
   width: 760px;
   height: 0.5px;
   margin-left: 85px;
-  margin-top: 15px;
+  margin-top: 35px;
   margin-bottom: 10px;
 }
 
@@ -135,7 +189,7 @@
   width: 42px;
   height: 42px;
   position: absolute;
-  bottom: -100px;
+  bottom: 70px;
   margin-left: 85px;
   margin-top: 40px;
 }
