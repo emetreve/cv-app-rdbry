@@ -21,6 +21,8 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
 
   const [dataAPI, setDataAPI] = useState([]);
 
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
     getDegrees().then((returned) => {
       setDataAPI(returned);
@@ -172,28 +174,40 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     return true;
   }
 
-  function handleDegree(e) {
+  const toggleDropdown = () => {
+    setOpen(!open);
+  };
+
+  const handleDropdown = (idDegree, title) => {
+    setOpen(false);
+    handleDegree(idDegree, title);
+  };
+
+  function handleDegree(idDegree, title) {
     const updatedExperience = { ...experience };
-    updatedExperience.degree = e.target.value;
+    updatedExperience.degree = title;
     setExperience(updatedExperience);
-    localStorage.setItem(`degree${id}`, e.target.value);
+    localStorage.setItem(`degree${id}`, title);
+
+    console.log(id, title);
+    localStorage.setItem(`idDegree${id}`, idDegree);
 
     //get the IDs
-    fetch("https://resume.redberryinternship.ge/api/degrees")
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-      })
-      .then((data) => {
-        const match = data.filter((item) => item.title === e.target.value);
-        localStorage.setItem(`idDegree${id}`, match[0].id);
-        console.log(300000, match[0]);
-        return match;
-      });
+    // fetch("https://resume.redberryinternship.ge/api/degrees")
+    //   .then((response) => {
+    //     if (response.ok) {
+    //       return response.json();
+    //     }
+    //   })
+    //   .then((data) => {
+    //     const match = data.filter((item) => item.idDegree === idDegree);
+    //     // const match = data.filter((item) => item.title === e.target.value);
+    //     // console.log(300000, match[0]);
+    //     return match;
+    //   });
     //end of getting the IDs
 
-    if (e.target.value.length < 2) {
+    if (title.length < 2) {
       setDegreeValid("invalid");
     } else {
       setDegreeValid("");
@@ -265,7 +279,7 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
       <div style={{ display: "flex", flexDirection: "row", gap: "54px" }}>
         <div className={styles.graduationDateSection}>
           <p style={degreeValid ? { color: "red" } : null}>ხარისხი</p>
-          <select
+          {/* <select
             id="select"
             className={styles.select}
             onChange={handleDegree}
@@ -279,11 +293,37 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
                 localStorage.getItem(`degree${id}`) ||
                 "აირჩიეთ ხარისხი"}
             </option>
+
             {dataAPI.length > 0 &&
               dataAPI.map((each) => {
                 return <option key={each.id}>{each.title}</option>;
               })}
-          </select>
+          </select> */}
+
+          <div className={styles.customSelect} onClick={toggleDropdown}>
+            <div className={styles.selectedOption}>
+              {experience.degree ||
+                localStorage.getItem(`degree${id}`) ||
+                "აირჩიეთ ხარისხი"}
+            </div>
+            {open && (
+              <div className={styles.optionsContainer}>
+                {dataAPI.map((each) => {
+                  return (
+                    <div
+                      key={each.id}
+                      className={styles.option}
+                      onClick={() => {
+                        handleDropdown(each.id, each.title);
+                      }}
+                    >
+                      {each.title}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
 
           {degreeValid === "" && experience.degree !== "" ? (
             <img

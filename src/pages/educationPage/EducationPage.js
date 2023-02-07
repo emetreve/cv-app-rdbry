@@ -149,7 +149,6 @@ function EducationPage() {
       }
     });
 
-    //request using axios with error handling
     axios
       .post("https://resume.redberryinternship.ge/api/cvs", formData)
       .then((response) => {

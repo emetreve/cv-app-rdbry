@@ -39,7 +39,7 @@
   width: 21px;
   position: absolute;
   top: 173px;
-  left: 332px;
+  left: 322px;
   background-color: white;
 }
 
@@ -122,4 +122,48 @@
   height: 1px;
   left: 0;
   top: 500px;
+}
+
+.customSelect {
+  position: relative;
+  right: 3px;
+  display: flex;
+  height: 48px;
+  width: 320px;
+  align-items: flex-start;
+  align-items: center;
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+  padding-left: 14px;
+  padding-right: 20px;
+}
+
+.selectedOption {
+  padding: 10px;
+}
+
+.optionsContainer {
+  position: absolute;
+  top: 49px;
+  right: 0px;
+  width: 338px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  z-index: 2;
+  padding: 2px;
+  box-shadow: 1px 3px 7px -3px rgba(0, 0, 0, 0.6);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  color: #1a1a1a;
+  padding-left: 15px;
+  padding-top: 8px;
+  margin-top: 1px;
+}
+
+.option {
+  padding: 10px;
 }

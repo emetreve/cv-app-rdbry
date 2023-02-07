@@ -39,6 +39,8 @@ function PersonalPage() {
         !/^[ა-ჰ\s!@#$%^&*()_+=]+$/.test(localStorage.getItem("surname"))
       ) {
         setSurnameValid("გამოიყენე ქართული ასოები");
+      } else if (/[\s]/.test(localStorage.getItem("surname"))) {
+        setSurnameValid("სფეისების გარეშე შეიყვანეთ");
       } else {
         setSurnameValid("");
       }
