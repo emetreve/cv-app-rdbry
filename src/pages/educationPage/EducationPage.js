@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
 import axios from "axios";
 import Education from "../../components/education/Education";
 import styles from "./EducationPage.module.css";
-
 import back from "../../images/back.png";
 import line from "../../images/line.png";
 import Cv from "../../components/cv/Cv";
@@ -14,6 +14,9 @@ function EducationPage() {
   const [childReady, setChildReady] = useState(false);
   const [readyOthers, setReadyOthers] = useState(true);
   const [updateCv, setUpdateCv] = useState(false);
+
+  //accessing global state for processing POST request data
+  const { setServerData, setServerErrors } = useContext(AppContext);
 
   if (!localStorage.getItem("eduCount")) {
     localStorage.setItem("eduCount", 1);
@@ -152,11 +155,15 @@ function EducationPage() {
     axios
       .post("https://resume.redberryinternship.ge/api/cvs", formData)
       .then((response) => {
-        console.log("response: ", response);
+        console.log("EDUAPAGE, response: ", response);
+        setServerData(response);
       })
       .catch((error) => {
         console.error("There was an error!", error.response.data);
+        setServerErrors(error);
       });
+    navigate("/resume");
+    window.scrollTo(0, 0);
   }
 
   return (

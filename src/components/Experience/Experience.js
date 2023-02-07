@@ -137,6 +137,7 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
         updateCvSetter(!updateCv);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, experience]);
 
   function handleTitle(e) {
