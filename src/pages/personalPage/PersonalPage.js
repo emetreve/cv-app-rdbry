@@ -55,6 +55,8 @@ function PersonalPage() {
         setEmailValid("უნდა მთავრდებოდეს @redberry.ge-ით");
       } else if (localStorage.getItem("email") < 13) {
         setEmailValid("იმეილი ძალზე მოკლეა");
+      } else if (localStorage.getItem("email").includes(" ")) {
+        setEmailValid("სფეისების გარეშე დაწერეთ");
       } else {
         setEmailValid("");
       }
@@ -142,6 +144,8 @@ function PersonalPage() {
       setEmailValid("უნდა მთავრდებოდეს @redberry.ge-ით");
     } else if (e.target.value.length < 13) {
       setEmailValid("იმეილი ძალზე მოკლეა");
+    } else if (e.target.value.includes(" ")) {
+      setEmailValid("სფეისების გარეშე დაწერეთ");
     } else {
       setEmailValid("");
     }
