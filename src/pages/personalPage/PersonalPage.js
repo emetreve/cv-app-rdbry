@@ -80,9 +80,13 @@ function PersonalPage() {
 
     if (!localStorage.getItem("picture")) {
       let othersPresent =
+        nameValid === "" &&
+        surnameValid === "" &&
+        surnameValid === "" &&
+        emailValid === "" &&
+        phoneValid === "" &&
         localStorage.getItem("name") &&
         localStorage.getItem("surname") &&
-        localStorage.getItem("about") &&
         localStorage.getItem("email") &&
         localStorage.getItem("phone");
       if (othersPresent) {
@@ -295,12 +299,15 @@ function PersonalPage() {
             </div>
 
             <div>
-              <p
-                className={styles.photoText}
-                style={pictureValid ? { color: "red" } : null}
-              >
-                პირადი ფოტოს ატვირთვა
-              </p>
+              <p className={styles.photoText}>პირადი ფოტოს ატვირთვა</p>
+
+              {pictureValid !== "" && (
+                <img
+                  src={invalid}
+                  className={styles.checkMarkImage}
+                  alt="validated icon"
+                />
+              )}
 
               <input
                 ref={inputRef}

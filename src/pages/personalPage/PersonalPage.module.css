@@ -87,6 +87,14 @@
   left: 730px;
 }
 
+.checkMarkImage {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 325px;
+  left: 520px;
+}
+
 .nameSection {
   position: absolute;
   display: flex;
