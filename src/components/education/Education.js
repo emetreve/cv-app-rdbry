@@ -82,7 +82,9 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     }
 
     if (localStorage.getItem(`institute${id}`)) {
-      if (localStorage.getItem(`institute${id}`).length < 2) {
+      if (
+        localStorage.getItem(`institute${id}`).replace(/\s/g, "").length < 2
+      ) {
         setInstituteValid("სასწავლებელი ძალზე მოკლეა");
         if (ready) {
           ready(false);
@@ -97,7 +99,10 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     }
 
     if (localStorage.getItem(`eduDescription${id}`)) {
-      if (localStorage.getItem(`eduDescription${id}`).length < 2) {
+      if (
+        localStorage.getItem(`eduDescription${id}`).replace(/\s/g, "").length <
+        2
+      ) {
         setDescriptionEduValid("აღწერა ძალზე მოკლეა");
         if (ready) {
           ready(false);
@@ -112,7 +117,9 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     }
 
     if (localStorage.getItem(`graduation${id}`)) {
-      if (localStorage.getItem(`graduation${id}`).length < 2) {
+      if (
+        localStorage.getItem(`graduation${id}`).replace(/\s/g, "").length < 2
+      ) {
         setGraduationValid("დამთავრების რიცხვი აუცილებელია");
         if (ready) {
           ready(false);
@@ -132,8 +139,7 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     updatedExperience.institute = e.target.value;
     setExperience(updatedExperience);
     localStorage.setItem(`institute${id}`, e.target.value);
-    console.log(localStorage.getItem(`institute${id}`));
-    if (e.target.value.length < 2) {
+    if (e.target.value.replace(/\s/g, "").length < 2) {
       setInstituteValid("სასწავლებელი ძალზე მოკლეა");
       if (ready) {
         ready(false);
@@ -159,7 +165,12 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
       `${document.getElementById(`graduation${id}`).value}`
     );
 
-    if (String(document.getElementById(`graduation${id}`).value) < 2) {
+    if (
+      String(
+        document.getElementById(`graduation${id}`).value.replace(/\s/g, "")
+          .length
+      ) < 2
+    ) {
       setGraduationValid("დამთავრების რიცხვი აუცილებელია");
       if (ready) {
         ready(false);
@@ -190,10 +201,9 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     setExperience(updatedExperience);
     localStorage.setItem(`degree${id}`, title);
 
-    console.log(id, title);
     localStorage.setItem(`idDegree${id}`, idDegree);
 
-    if (title.length < 2) {
+    if (title.replace(/\s/g, "").length < 2) {
       setDegreeValid("invalid");
     } else {
       setDegreeValid("");
@@ -208,7 +218,7 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     updatedExperience.descriptionEdu = e.target.value;
     setExperience(updatedExperience);
 
-    if (e.target.value.length < 2) {
+    if (e.target.value.replace(/\s/g, "").length < 2) {
       setDescriptionEduValid("გამოცდილება ძალზე მოკლეა");
       if (ready) {
         ready(false);

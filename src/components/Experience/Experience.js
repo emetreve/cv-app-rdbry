@@ -80,7 +80,7 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     }
 
     if (localStorage.getItem(`title${id}`)) {
-      if (localStorage.getItem(`title${id}`).length < 2) {
+      if (localStorage.getItem(`title${id}`).replace(/\s/g, "").length < 2) {
         setTitleValid("თანამდებობა ძალზე მოკლეა");
         if (ready) {
           ready(false);
@@ -94,7 +94,7 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     }
 
     if (localStorage.getItem(`employer${id}`)) {
-      if (localStorage.getItem(`employer${id}`).length < 2) {
+      if (localStorage.getItem(`employer${id}`).replace(/\s/g, "").length < 2) {
         setEmployerValid("დამსაქმებელი ძალზე მოკლეა");
         if (ready) {
           ready(false);
@@ -109,7 +109,9 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     }
 
     if (localStorage.getItem(`description${id}`)) {
-      if (localStorage.getItem(`description${id}`).length < 2) {
+      if (
+        localStorage.getItem(`description${id}`).replace(/\s/g, "").length < 2
+      ) {
         setDescriptionValid("აღწერა ძალზე მოკლეა");
         if (ready) {
           ready(false);
@@ -146,7 +148,7 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     setExperience(updatedExperience);
     localStorage.setItem(`title${id}`, e.target.value);
 
-    if (e.target.value.length < 2) {
+    if (e.target.value.replace(/\s/g, "").length < 2) {
       setTitleValid("თანამდებობა ძალზე მოკლეა");
       if (ready) {
         ready(false);
@@ -168,7 +170,7 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     setExperience(updatedExperience);
     localStorage.setItem(`employer${id}`, e.target.value);
     console.log(localStorage.getItem(`employer${id}`));
-    if (e.target.value.length < 2) {
+    if (e.target.value.replace(/\s/g, "").length < 2) {
       setEmployerValid("დამსაქმებელი ძალზე მოკლეა");
       if (ready) {
         ready(false);
@@ -231,7 +233,7 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     updatedExperience.description = e.target.value;
     setExperience(updatedExperience);
 
-    if (e.target.value.length < 2) {
+    if (e.target.value.replace(/\s/g, "").length < 2) {
       setDescriptionValid("გამოცდილება ძალზე მოკლეა");
       if (ready) {
         ready(false);
