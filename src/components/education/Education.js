@@ -246,7 +246,14 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
           }
           type="text"
           onChange={handleInstitute}
-          style={instituteValid ? { borderColor: "red" } : null}
+          style={{
+            ...(instituteValid ? { borderColor: "red" } : null),
+            ...(instituteValid === "" &&
+            experience.institute !== "" &&
+            localStorage.getItem(`institute${id}`) !== ""
+              ? { borderColor: "#98E37E" }
+              : null),
+          }}
         />
 
         {instituteValid === "" && experience.institute !== "" ? (
@@ -276,7 +283,18 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
         <div className={styles.graduationDateSection}>
           <p style={degreeValid ? { color: "red" } : null}>ხარისხი</p>
 
-          <div className={styles.customSelect} onClick={toggleDropdown}>
+          <div
+            className={styles.customSelect}
+            onClick={toggleDropdown}
+            style={{
+              ...(degreeValid ? { borderColor: "red" } : null),
+              ...(degreeValid === "" &&
+              experience.degree !== "" &&
+              localStorage.getItem(`degree${id}`) !== ""
+                ? { borderColor: "#98E37E" }
+                : null),
+            }}
+          >
             <div className={styles.selectedOption}>
               {experience.degree ||
                 localStorage.getItem(`degree${id}`) ||
@@ -335,7 +353,14 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
             onClick={() => {
               document.getElementById(`graduation${id}`).showPicker();
             }}
-            style={graduationValid ? { borderColor: "red" } : null}
+            style={{
+              ...(graduationValid ? { borderColor: "red" } : null),
+              ...(graduationValid === "" &&
+              experience.graduation !== "" &&
+              localStorage.getItem(`graduation${id}`) !== ""
+                ? { borderColor: "#98E37E" }
+                : null),
+            }}
           />
 
           {graduationValid === "" && experience.graduation !== "" ? (
@@ -366,7 +391,14 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
             ""
           }
           onChange={handleDescription}
-          style={descriptionEduValid ? { borderColor: "red" } : null}
+          style={{
+            ...(descriptionEduValid ? { borderColor: "red" } : null),
+            ...(descriptionEduValid === "" &&
+            experience.descriptionEdu !== "" &&
+            localStorage.getItem(`eduDescription${id}`) !== ""
+              ? { borderColor: "#98E37E" }
+              : null),
+          }}
         />
       </div>
       <img src={divider} className={styles.divider} alt="divider" />

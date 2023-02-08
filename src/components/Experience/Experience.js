@@ -259,7 +259,14 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
           value={experience.title || localStorage.getItem(`title${id}`) || ""}
           type="text"
           onChange={handleTitle}
-          style={titleValid ? { borderColor: "red" } : null}
+          style={{
+            ...(titleValid ? { borderColor: "red" } : null),
+            ...(titleValid === "" &&
+            experience.title !== "" &&
+            localStorage.getItem(`title${id}`) !== ""
+              ? { borderColor: "#98E37E" }
+              : null),
+          }}
         />
 
         {titleValid === "" && experience.title !== "" ? (
@@ -292,7 +299,14 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
           }
           type="text"
           onChange={handleEmployer}
-          style={employerValid ? { borderColor: "red" } : null}
+          style={{
+            ...(employerValid ? { borderColor: "red" } : null),
+            ...(employerValid === "" &&
+            experience.employer !== "" &&
+            localStorage.getItem(`employer${id}`) !== ""
+              ? { borderColor: "#98E37E" }
+              : null),
+          }}
         />
 
         {employerValid === "" && experience.employer !== "" ? (
@@ -332,7 +346,14 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
           onClick={() => {
             document.getElementById(`startDate${id}`).showPicker();
           }}
-          style={startDateValid ? { borderColor: "red" } : null}
+          style={{
+            ...(startDateValid ? { borderColor: "red" } : null),
+            ...(startDateValid === "" &&
+            experience.startDate !== "" &&
+            localStorage.getItem(`startDate${id}`) !== ""
+              ? { borderColor: "#98E37E" }
+              : null),
+          }}
         />
 
         {startDateValid === "" && experience.startDate !== "" ? (
@@ -362,7 +383,14 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
           onClick={() => {
             document.getElementById(`endDate${id}`).showPicker();
           }}
-          style={endDateValid ? { borderColor: "red" } : null}
+          style={{
+            ...(endDateValid ? { borderColor: "red" } : null),
+            ...(endDateValid === "" &&
+            experience.endDate !== "" &&
+            localStorage.getItem(`endDate${id}`) !== ""
+              ? { borderColor: "#98E37E" }
+              : null),
+          }}
         />
 
         {endDateValid === "" && experience.endDate !== "" ? (
@@ -392,7 +420,14 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
             ""
           }
           onChange={handleDescription}
-          style={descriptionValid ? { borderColor: "red" } : null}
+          style={{
+            ...(descriptionValid ? { borderColor: "red" } : null),
+            ...(descriptionValid === "" &&
+            experience.description !== "" &&
+            localStorage.getItem(`description${id}`) !== ""
+              ? { borderColor: "#98E37E" }
+              : null),
+          }}
         />
       </div>
       <img src={divider} className={styles.divider} alt="divider" />

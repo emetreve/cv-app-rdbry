@@ -218,7 +218,14 @@ function PersonalPage() {
                 value={personal.name || localStorage.getItem("name") || ""}
                 type="text"
                 onChange={handleName}
-                style={nameValid ? { borderColor: "red" } : null}
+                style={{
+                  ...(nameValid ? { borderColor: "red" } : null),
+                  ...(nameValid === "" &&
+                  personal.name !== "" &&
+                  localStorage.getItem("name") !== ""
+                    ? { borderColor: "#98E37E" }
+                    : null),
+                }}
               />
 
               {nameValid === "" && personal.name !== "" ? (
@@ -255,7 +262,14 @@ function PersonalPage() {
                   localStorage.getItem("surname") || personal.surname || ""
                 }
                 onChange={handleSurname}
-                style={surnameValid ? { borderColor: "red" } : null}
+                style={{
+                  ...(surnameValid ? { borderColor: "red" } : null),
+                  ...(surnameValid === "" &&
+                  personal.surname !== "" &&
+                  localStorage.getItem("surname") !== ""
+                    ? { borderColor: "#98E37E" }
+                    : null),
+                }}
               />
               {surnameValid === "" && personal.surname !== "" ? (
                 <img
@@ -333,7 +347,14 @@ function PersonalPage() {
                   value={personal.email || localStorage.getItem("email") || ""}
                   type="text"
                   onChange={handleEmail}
-                  style={emailValid ? { borderColor: "red" } : null}
+                  style={{
+                    ...(emailValid ? { borderColor: "red" } : null),
+                    ...(emailValid === "" &&
+                    personal.email !== "" &&
+                    localStorage.getItem("email") !== ""
+                      ? { borderColor: "#98E37E" }
+                      : null),
+                  }}
                 />
 
                 {emailValid === "" && personal.email !== "" ? (
@@ -370,7 +391,14 @@ function PersonalPage() {
                   value={personal.phone || localStorage.getItem("phone") || ""}
                   type="text"
                   onChange={handlePhone}
-                  style={phoneValid ? { borderColor: "red" } : null}
+                  style={{
+                    ...(phoneValid ? { borderColor: "red" } : null),
+                    ...(phoneValid === "" &&
+                    personal.phone !== "" &&
+                    localStorage.getItem("phone") !== ""
+                      ? { borderColor: "#98E37E" }
+                      : null),
+                  }}
                 />
                 {phoneValid === "" && personal.phone !== "" ? (
                   <img
