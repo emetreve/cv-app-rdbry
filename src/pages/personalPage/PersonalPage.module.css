@@ -189,6 +189,7 @@
 }
 
 .photoName {
+  max-width: 448px;
   position: absolute;
   left: 510px;
   top: 324px;

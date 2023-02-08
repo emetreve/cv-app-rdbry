@@ -279,7 +279,7 @@ function PersonalPage() {
             <div>
               <p
                 className={styles.photoText}
-                // style={pictureValid ? { color: "red" } : null}
+                style={pictureValid ? { color: "red" } : null}
               >
                 პირადი ფოტოს ატვირთვა
               </p>
