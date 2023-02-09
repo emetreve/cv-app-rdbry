@@ -439,6 +439,47 @@ function PersonalPage() {
             <button
               className={styles.submit}
               onClick={() => {
+                const allValid = !(
+                  !localStorage.getItem("name") ||
+                  !localStorage.getItem("surname") ||
+                  !localStorage.getItem("picture") ||
+                  !localStorage.getItem("email") ||
+                  !localStorage.getItem("phone") ||
+                  phoneValid.length > 1 ||
+                  emailValid.length > 1 ||
+                  pictureValid.length > 1 ||
+                  nameValid.length > 1 ||
+                  surnameValid.length > 1
+                );
+
+                if (allValid) {
+                  navigate("/experience");
+                  window.scrollTo(0, 0);
+                } else {
+                  if (!localStorage.getItem("name")) {
+                    setNameValid("სახელი აუცილებელია");
+                  }
+                  if (!localStorage.getItem("surname")) {
+                    setSurnameValid("გვარი აუცილებელია");
+                  }
+                  if (!localStorage.getItem("picture")) {
+                    setPictureValid("ფოტო აუცილებელია");
+                  }
+                  if (!localStorage.getItem("email")) {
+                    setEmailValid("ელ.ფოსტა აუცილებელია");
+                  }
+                  if (!localStorage.getItem("phone")) {
+                    setPhoneValid("მობილურის ნომერი აუცილებელია");
+                  }
+                }
+              }}
+            >
+              ᲨᲔᲛᲓᲔᲒᲘ
+            </button>
+
+            {/* <button
+              className={styles.submit}
+              onClick={() => {
                 navigate("/experience");
                 window.scrollTo(0, 0);
               }}
@@ -456,7 +497,7 @@ function PersonalPage() {
               }
             >
               ᲨᲔᲛᲓᲔᲒᲘ
-            </button>
+            </button> */}
           </div>
           <div className={styles.rightColumn}>
             <Cv
