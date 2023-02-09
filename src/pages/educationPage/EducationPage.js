@@ -162,6 +162,7 @@ function EducationPage() {
         console.error("There was an error!", error.response.data);
         setServerErrors(error);
       });
+
     navigate("/resume");
     window.scrollTo(0, 0);
   }

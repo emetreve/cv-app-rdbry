@@ -109,7 +109,8 @@ function ResumePage() {
                 >
                   <h2 className={styles.aboutTitle}>ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ</h2>
                   <p className={styles.about}>
-                    {serverData.about_me.toLocaleLowerCase()}
+                    {serverData.about_me &&
+                      serverData.about_me.toLocaleLowerCase()}
                   </p>
                 </div>
 
