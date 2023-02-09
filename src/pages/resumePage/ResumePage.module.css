@@ -127,6 +127,7 @@
 
 .image {
   position: absolute;
+  border: 1.5px solid white;
   width: 262px;
   height: 262px;
   right: 117px;
