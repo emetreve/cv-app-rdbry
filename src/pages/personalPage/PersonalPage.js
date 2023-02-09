@@ -24,9 +24,7 @@ function PersonalPage() {
     if (localStorage.getItem("name")) {
       if (localStorage.getItem("name").length < 2) {
         setNameValid("სახელი ძალზე მოკლეა");
-      } else if (
-        !/^[ა-ჰ\s!@#$%^&*()_+=]+$/.test(localStorage.getItem("name"))
-      ) {
+      } else if (!/^[ა-ჰ]/.test(localStorage.getItem("name"))) {
         setNameValid("გამოიყენე ქართული ასოები");
       } else if (/[\s]/.test(localStorage.getItem("name"))) {
         setNameValid("სფეისების გარეშე შეიყვანეთ");
@@ -37,9 +35,7 @@ function PersonalPage() {
     if (localStorage.getItem("surname")) {
       if (localStorage.getItem("surname").length < 2) {
         setSurnameValid("გვარი ძალზე მოკლეა");
-      } else if (
-        !/^[ა-ჰ\s!@#$%^&*()_+=]+$/.test(localStorage.getItem("surname"))
-      ) {
+      } else if (!/^[ა-ჰ]/.test(localStorage.getItem("surname"))) {
         setSurnameValid("გამოიყენე ქართული ასოები");
       } else if (/[\s]/.test(localStorage.getItem("surname"))) {
         setSurnameValid("სფეისების გარეშე შეიყვანეთ");
@@ -65,8 +61,8 @@ function PersonalPage() {
     if (localStorage.getItem("phone")) {
       if (localStorage.getItem("phone").length < 2) {
         setPhoneValid("მობილურის ნომერი სავალდებულოა");
-      } else if (localStorage.getItem("phone").slice(0, 4) !== "+995") {
-        setPhoneValid("მობილურის ნომერი უნდა იწყებოდეს +995-ით");
+      } else if (localStorage.getItem("phone").slice(0, 5) !== "+9955") {
+        setPhoneValid("მობილურის ნომერი უნდა იწყებოდეს +9955-ით");
       } else if (localStorage.getItem("phone").length !== 13) {
         setPhoneValid("მობილურის ნომერი უნდა იყოს 13 ნიშნა");
       } else if (!/^[0-9\s+]+$/.test(localStorage.getItem("phone"))) {
@@ -110,7 +106,7 @@ function PersonalPage() {
     localStorage.setItem("name", `${e.target.value}`);
     if (e.target.value.length < 2) {
       setNameValid("სახელი ძალზე მოკლეა");
-    } else if (!/^[ა-ჰ\s!@#$%^&*()_+=]+$/.test(e.target.value)) {
+    } else if (!/^[ა-ჰ]/.test(e.target.value)) {
       setNameValid("გამოიყენე ქართული ასოები");
     } else if (/[\s]/.test(localStorage.getItem("name"))) {
       setNameValid("სფეისების გარეშე შეიყვანეთ");
@@ -127,7 +123,7 @@ function PersonalPage() {
     localStorage.setItem("surname", `${e.target.value}`);
     if (e.target.value.length < 2) {
       setSurnameValid("გვარი ძალზე მოკლეა");
-    } else if (!/^[ა-ჰ\s!@#$%^&*()_+=]+$/.test(e.target.value)) {
+    } else if (!/^[ა-ჰ]/.test(e.target.value)) {
       setSurnameValid("გამოიყენე ქართული ასოები");
     } else if (/[\s]/.test(localStorage.getItem("surname"))) {
       setSurnameValid("სფეისების გარეშე შეიყვანეთ");
@@ -182,8 +178,8 @@ function PersonalPage() {
 
     if (e.target.value.length < 2) {
       setPhoneValid("მობილურის ნომერი სავალდებულოა");
-    } else if (e.target.value.slice(0, 4) !== "+995") {
-      setPhoneValid("მობილურის ნომერი უნდა იწყებოდეს +995-ით");
+    } else if (e.target.value.slice(0, 5) !== "+9955") {
+      setPhoneValid("მობილურის ნომერი უნდა იწყებოდეს +9955-ით");
     } else if (e.target.value.length !== 13) {
       setPhoneValid("მობილურის ნომერი უნდა იყოს 13 ნიშნა");
     } else if (!/^[0-9\s+]+$/.test(e.target.value)) {
