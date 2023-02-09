@@ -107,7 +107,18 @@ function ResumePage() {
                     width: "600px",
                   }}
                 >
-                  <h2 className={styles.aboutTitle}>ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ</h2>
+                  {
+                    <h2
+                      style={
+                        !serverData.about_me
+                          ? { color: "white", userSelect: "none" }
+                          : null
+                      }
+                      className={styles.aboutTitle}
+                    >
+                      ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ
+                    </h2>
+                  }
                   <p className={styles.about}>
                     {serverData.about_me &&
                       serverData.about_me.toLocaleLowerCase()}

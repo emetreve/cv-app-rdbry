@@ -49,7 +49,7 @@ function PersonalPage() {
         setEmailValid("იმეილი სავალდებულოა");
       } else if (localStorage.getItem("email").slice(-12) !== "@redberry.ge") {
         setEmailValid("უნდა მთავრდებოდეს @redberry.ge-ით");
-      } else if (localStorage.getItem("email") < 13) {
+      } else if (localStorage.getItem("email").length < 13) {
         setEmailValid("იმეილი ძალზე მოკლეა");
       } else if (localStorage.getItem("email").includes(" ")) {
         setEmailValid("სფეისების გარეშე დაწერეთ");
