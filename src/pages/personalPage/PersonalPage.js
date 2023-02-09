@@ -253,7 +253,7 @@ function PersonalPage() {
             </div>
 
             <div className={styles.lastNameSection}>
-              <p>გვარი</p>
+              <p style={surnameValid ? { color: "red" } : null}>გვარი</p>
               <input
                 className={styles.inputItem}
                 placeholder="მეტრეველი"

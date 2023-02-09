@@ -8,6 +8,7 @@ import phone from "../../images/phone.png";
 import divider from "../../images/divider.png";
 import logoFoot from "../../images/logoFoot.png";
 import back from "../../images/backDark.png";
+import invalid from "../../images/invalid.png";
 
 function ResumePage() {
   const { serverData, serverErrors } = useContext(AppContext);
@@ -216,7 +217,20 @@ function ResumePage() {
         </>
       )}
 
-      {serverErrors.message && <h1>ERRORRR</h1>}
+      {serverErrors.message && (
+        <div className={styles.warning}>
+          <img src={invalid} alt="warning" className={styles.invalid} />
+          <h5>თქვენმა მონაცემებმა ვალიდაცია ვერ გაიარა</h5>
+          <h5>გთხოვთ უკან დაბრუნდით და გადაამოწმეთ შეყვანილი ინფორმაცია</h5>
+          <div className={styles.errorBox}>
+            {Object.entries(serverErrors.response.data.errors).map(
+              (each, i) => {
+                return <p key={i}>{each[1]}</p>;
+              }
+            )}
+          </div>
+        </div>
+      )}
     </>
   );
 }

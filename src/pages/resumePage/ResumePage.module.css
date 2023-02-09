@@ -193,3 +193,33 @@
   margin-left: 85px;
   margin-top: 40px;
 }
+
+.warning {
+  border: 2px solid #6b40e35d;
+  border-radius: 10px;
+  margin-left: 530px;
+  margin-right: 530px;
+  padding: 40px 0;
+  position: relative;
+  top: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+  color: #f93b1d;
+  line-height: 29px;
+}
+
+.errorBox {
+  margin-top: 20px;
+  position: relative;
+  color: #6b40e3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.invalid {
+  height: 30px;
+  margin-bottom: 20px;
+}
