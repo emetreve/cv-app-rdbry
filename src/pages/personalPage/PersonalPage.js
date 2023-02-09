@@ -297,6 +297,14 @@ function PersonalPage() {
             <div>
               <p className={styles.photoText}>პირადი ფოტოს ატვირთვა</p>
 
+              {pictureValid === "" && personal.picture !== "" ? (
+                <img
+                  src={valid}
+                  className={styles.checkMarkImage}
+                  alt="validated icon"
+                />
+              ) : null}
+
               {pictureValid !== "" && (
                 <img
                   src={invalid}
