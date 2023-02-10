@@ -61,8 +61,8 @@ function PersonalPage() {
     if (localStorage.getItem("phone")) {
       if (localStorage.getItem("phone").length < 2) {
         setPhoneValid("მობილურის ნომერი სავალდებულოა");
-      } else if (localStorage.getItem("phone").slice(0, 5) !== "+9955") {
-        setPhoneValid("მობილურის ნომერი უნდა იწყებოდეს +9955-ით");
+      } else if (localStorage.getItem("phone").slice(0, 4) !== "+995") {
+        setPhoneValid("მობილურის ნომერი უნდა იწყებოდეს +995-ით");
       } else if (localStorage.getItem("phone").length !== 13) {
         setPhoneValid("მობილურის ნომერი უნდა იყოს 13 ნიშნა");
       } else if (!/^[0-9\s+]+$/.test(localStorage.getItem("phone"))) {
@@ -178,8 +178,8 @@ function PersonalPage() {
 
     if (e.target.value.length < 2) {
       setPhoneValid("მობილურის ნომერი სავალდებულოა");
-    } else if (e.target.value.slice(0, 5) !== "+9955") {
-      setPhoneValid("მობილურის ნომერი უნდა იწყებოდეს +9955-ით");
+    } else if (e.target.value.slice(0, 4) !== "+995") {
+      setPhoneValid("მობილურის ნომერი უნდა იწყებოდეს +995-ით");
     } else if (e.target.value.length !== 13) {
       setPhoneValid("მობილურის ნომერი უნდა იყოს 13 ნიშნა");
     } else if (!/^[0-9\s+]+$/.test(e.target.value)) {
