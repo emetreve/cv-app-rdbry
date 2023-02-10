@@ -127,13 +127,13 @@
 
 .image {
   position: absolute;
-  border: 1.5px solid white;
-  width: 262px;
-  height: 262px;
+  /* border: 1px solid white; */
+  width: 260px;
+  height: 260px;
   right: 117px;
   top: 40px;
-  border-radius: 133px;
-  background-color: red;
+  border-radius: 50%;
+  background-color: grey;
 }
 
 .divider {
