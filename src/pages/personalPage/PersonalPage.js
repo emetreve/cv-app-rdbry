@@ -24,7 +24,7 @@ function PersonalPage() {
     if (localStorage.getItem("name")) {
       if (localStorage.getItem("name").length < 2) {
         setNameValid("სახელი ძალზე მოკლეა");
-      } else if (!/^[ა-ჰ]/.test(localStorage.getItem("name"))) {
+      } else if (!/^[ა-ჰ]+$/.test(localStorage.getItem("name"))) {
         setNameValid("გამოიყენე ქართული ასოები");
       } else if (/[\s]/.test(localStorage.getItem("name"))) {
         setNameValid("სფეისების გარეშე შეიყვანეთ");
@@ -35,7 +35,7 @@ function PersonalPage() {
     if (localStorage.getItem("surname")) {
       if (localStorage.getItem("surname").length < 2) {
         setSurnameValid("გვარი ძალზე მოკლეა");
-      } else if (!/^[ა-ჰ]/.test(localStorage.getItem("surname"))) {
+      } else if (!/^[ა-ჰ]+$/.test(localStorage.getItem("surname"))) {
         setSurnameValid("გამოიყენე ქართული ასოები");
       } else if (/[\s]/.test(localStorage.getItem("surname"))) {
         setSurnameValid("სფეისების გარეშე შეიყვანეთ");
@@ -106,7 +106,7 @@ function PersonalPage() {
     localStorage.setItem("name", `${e.target.value}`);
     if (e.target.value.length < 2) {
       setNameValid("სახელი ძალზე მოკლეა");
-    } else if (!/^[ა-ჰ]/.test(e.target.value)) {
+    } else if (!/^[ა-ჰ]+$/.test(e.target.value)) {
       setNameValid("გამოიყენე ქართული ასოები");
     } else if (/[\s]/.test(localStorage.getItem("name"))) {
       setNameValid("სფეისების გარეშე შეიყვანეთ");
@@ -123,7 +123,7 @@ function PersonalPage() {
     localStorage.setItem("surname", `${e.target.value}`);
     if (e.target.value.length < 2) {
       setSurnameValid("გვარი ძალზე მოკლეა");
-    } else if (!/^[ა-ჰ]/.test(e.target.value)) {
+    } else if (!/^[ა-ჰ]+$/.test(e.target.value)) {
       setSurnameValid("გამოიყენე ქართული ასოები");
     } else if (/[\s]/.test(localStorage.getItem("surname"))) {
       setSurnameValid("სფეისების გარეშე შეიყვანეთ");
@@ -214,7 +214,7 @@ function PersonalPage() {
               <p style={nameValid ? { color: "red" } : null}>სახელი</p>
               <input
                 className={styles.inputItem}
-                placeholder="ელენე"
+                placeholder="ანზორ"
                 value={personal.name || localStorage.getItem("name") || ""}
                 type="text"
                 onChange={handleName}
@@ -256,7 +256,7 @@ function PersonalPage() {
               <p style={surnameValid ? { color: "red" } : null}>გვარი</p>
               <input
                 className={styles.inputItem}
-                placeholder="მეტრეველი"
+                placeholder="მუმლაძე"
                 type="text"
                 value={
                   localStorage.getItem("surname") || personal.surname || ""
