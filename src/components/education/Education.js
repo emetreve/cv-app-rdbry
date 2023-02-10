@@ -27,6 +27,9 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     getDegrees().then((returned) => {
       setDataAPI(returned);
     });
+  }, [id]);
+
+  useEffect(() => {
     if (ready === undefined) {
       if (
         !localStorage.getItem(`institute${id}`) ||

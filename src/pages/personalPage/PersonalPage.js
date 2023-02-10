@@ -89,6 +89,7 @@ function PersonalPage() {
         setPictureValid("სურათი დაგრჩა");
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [personal]);
 
   const [pictureName, setPictureName] = useState("");
