@@ -101,13 +101,14 @@ function PersonalPage() {
   const [phoneValid, setPhoneValid] = useState("");
 
   function handleName(e) {
+    const { value } = e.target;
     const updatedPersonal = { ...personal };
-    updatedPersonal.name = e.target.value;
+    updatedPersonal.name = value;
     setPersonal(updatedPersonal);
-    localStorage.setItem("name", `${e.target.value}`);
-    if (e.target.value.length < 2) {
+    localStorage.setItem("name", `${value}`);
+    if (value.length < 2) {
       setNameValid("სახელი ძალზე მოკლეა");
-    } else if (!/^[ა-ჰ]+$/.test(e.target.value)) {
+    } else if (!/^[ა-ჰ]+$/.test(value)) {
       setNameValid("გამოიყენე ქართული ასოები");
     } else if (/[\s]/.test(localStorage.getItem("name"))) {
       setNameValid("სფეისების გარეშე შეიყვანეთ");
@@ -118,13 +119,14 @@ function PersonalPage() {
   }
 
   function handleSurname(e) {
+    const { value } = e.target;
     const updatedPersonal = { ...personal };
-    updatedPersonal.surname = e.target.value;
+    updatedPersonal.surname = value;
     setPersonal(updatedPersonal);
-    localStorage.setItem("surname", `${e.target.value}`);
-    if (e.target.value.length < 2) {
+    localStorage.setItem("surname", `${value}`);
+    if (value.length < 2) {
       setSurnameValid("გვარი ძალზე მოკლეა");
-    } else if (!/^[ა-ჰ]+$/.test(e.target.value)) {
+    } else if (!/^[ა-ჰ]+$/.test(value)) {
       setSurnameValid("გამოიყენე ქართული ასოები");
     } else if (/[\s]/.test(localStorage.getItem("surname"))) {
       setSurnameValid("სფეისების გარეშე შეიყვანეთ");
@@ -135,17 +137,18 @@ function PersonalPage() {
   }
 
   function handleEmail(e) {
+    const { value } = e.target;
     const updatedPersonal = { ...personal };
-    updatedPersonal.email = e.target.value;
+    updatedPersonal.email = value;
     setPersonal(updatedPersonal);
-    localStorage.setItem("email", `${e.target.value}`);
-    if (e.target.value.length < 2) {
+    localStorage.setItem("email", `${value}`);
+    if (value.length < 2) {
       setEmailValid("იმეილი სავალდებულოა");
-    } else if (e.target.value.slice(-12) !== "@redberry.ge") {
+    } else if (value.slice(-12) !== "@redberry.ge") {
       setEmailValid("უნდა მთავრდებოდეს @redberry.ge-ით");
-    } else if (e.target.value.length < 13) {
+    } else if (value.length < 13) {
       setEmailValid("იმეილი ძალზე მოკლეა");
-    } else if (e.target.value.includes(" ")) {
+    } else if (value.includes(" ")) {
       setEmailValid("სფეისების გარეშე დაწერეთ");
     } else {
       setEmailValid("");
@@ -172,20 +175,21 @@ function PersonalPage() {
   }
 
   function handlePhone(e) {
+    const { value } = e.target;
     const updatedPersonal = { ...personal };
-    updatedPersonal.phone = e.target.value;
+    updatedPersonal.phone = value;
     setPersonal(updatedPersonal);
-    localStorage.setItem("phone", `${e.target.value}`);
+    localStorage.setItem("phone", `${value}`);
 
-    if (e.target.value.length < 2) {
+    if (value.length < 2) {
       setPhoneValid("მობილურის ნომერი სავალდებულოა");
-    } else if (e.target.value.slice(0, 4) !== "+995") {
+    } else if (value.slice(0, 4) !== "+995") {
       setPhoneValid("მობილურის ნომერი უნდა იწყებოდეს +995-ით");
-    } else if (e.target.value.length !== 13) {
+    } else if (value.length !== 13) {
       setPhoneValid("მობილურის ნომერი უნდა იყოს 13 ნიშნა");
-    } else if (!/^[0-9\s+]+$/.test(e.target.value)) {
+    } else if (!/^[0-9\s+]+$/.test(value)) {
       setPhoneValid("მობილურის ნომერში ჩაწერეთ მხოლოდ ციფრები");
-    } else if (/\s/g.test(e.target.value)) {
+    } else if (/\s/g.test(value)) {
       setPhoneValid("მობილურის ნომერში ჩაწერეთ მხოლოდ ციფრები");
     } else {
       setPhoneValid("");
@@ -477,28 +481,6 @@ function PersonalPage() {
             >
               ᲨᲔᲛᲓᲔᲒᲘ
             </button>
-
-            {/* <button
-              className={styles.submit}
-              onClick={() => {
-                navigate("/experience");
-                window.scrollTo(0, 0);
-              }}
-              disabled={
-                !localStorage.getItem("name") ||
-                !localStorage.getItem("surname") ||
-                !localStorage.getItem("picture") ||
-                !localStorage.getItem("email") ||
-                !localStorage.getItem("phone") ||
-                phoneValid.length > 1 ||
-                emailValid.length > 1 ||
-                pictureValid.length > 1 ||
-                nameValid.length > 1 ||
-                surnameValid.length > 1
-              }
-            >
-              ᲨᲔᲛᲓᲔᲒᲘ
-            </button> */}
           </div>
           <div className={styles.rightColumn}>
             <Cv

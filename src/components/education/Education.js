@@ -138,11 +138,13 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
   }, [id, experience]);
 
   function handleInstitute(e) {
+    const { value } = e.target;
+
     const updatedExperience = { ...experience };
-    updatedExperience.institute = e.target.value;
+    updatedExperience.institute = value;
     setExperience(updatedExperience);
-    localStorage.setItem(`institute${id}`, e.target.value);
-    if (e.target.value.replace(/\s/g, "").length < 2) {
+    localStorage.setItem(`institute${id}`, value);
+    if (value.replace(/\s/g, "").length < 2) {
       setInstituteValid("სასწავლებელი ძალზე მოკლეა");
       if (ready) {
         ready(false);
@@ -215,13 +217,14 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
   }
 
   function handleDescription(e) {
-    localStorage.setItem(`eduDescription${id}`, e.target.value);
+    const { value } = e.target;
+    localStorage.setItem(`eduDescription${id}`, value);
 
     const updatedExperience = { ...experience };
-    updatedExperience.descriptionEdu = e.target.value;
+    updatedExperience.descriptionEdu = value;
     setExperience(updatedExperience);
 
-    if (e.target.value.replace(/\s/g, "").length < 2) {
+    if (value.replace(/\s/g, "").length < 2) {
       setDescriptionEduValid("გამოცდილება ძალზე მოკლეა");
       if (ready) {
         ready(false);

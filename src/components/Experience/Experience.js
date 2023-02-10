@@ -143,12 +143,14 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
   }, [id, experience]);
 
   function handleTitle(e) {
-    const updatedExperience = { ...experience };
-    updatedExperience.title = e.target.value;
-    setExperience(updatedExperience);
-    localStorage.setItem(`title${id}`, e.target.value);
+    const { value } = e.target;
 
-    if (e.target.value.replace(/\s/g, "").length < 2) {
+    const updatedExperience = { ...experience };
+    updatedExperience.title = value;
+    setExperience(updatedExperience);
+    localStorage.setItem(`title${id}`, value);
+
+    if (value.replace(/\s/g, "").length < 2) {
       setTitleValid("თანამდებობა ძალზე მოკლეა");
       if (ready) {
         ready(false);
@@ -165,12 +167,14 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
   }
 
   function handleEmployer(e) {
+    const { value } = e.target;
+
     const updatedExperience = { ...experience };
-    updatedExperience.employer = e.target.value;
+    updatedExperience.employer = value;
     setExperience(updatedExperience);
-    localStorage.setItem(`employer${id}`, e.target.value);
+    localStorage.setItem(`employer${id}`, value);
     console.log(localStorage.getItem(`employer${id}`));
-    if (e.target.value.replace(/\s/g, "").length < 2) {
+    if (value.replace(/\s/g, "").length < 2) {
       setEmployerValid("დამსაქმებელი ძალზე მოკლეა");
       if (ready) {
         ready(false);
@@ -227,13 +231,14 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
   }
 
   function handleDescription(e) {
-    localStorage.setItem(`description${id}`, e.target.value);
+    const { value } = e.target;
 
+    localStorage.setItem(`description${id}`, value);
     const updatedExperience = { ...experience };
-    updatedExperience.description = e.target.value;
+    updatedExperience.description = value;
     setExperience(updatedExperience);
 
-    if (e.target.value.replace(/\s/g, "").length < 2) {
+    if (value.replace(/\s/g, "").length < 2) {
       setDescriptionValid("გამოცდილება ძალზე მოკლეა");
       if (ready) {
         ready(false);
