@@ -68,14 +68,9 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
         localStorage.getItem(`description${id}`).length < 2
       ) {
         ready(false);
-        // console.log(111, "setting to false");
-        // console.log(1000000, localStorage.getItem(`title${id}`).length);
       } else {
         ready(true);
         updateCvSetter(!updateCv);
-
-        // console.log("setting to true");
-        // console.log(100000, localStorage.getItem(`title${id}`).length);
       }
     }
 
@@ -173,7 +168,6 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     updatedExperience.employer = value;
     setExperience(updatedExperience);
     localStorage.setItem(`employer${id}`, value);
-    console.log(localStorage.getItem(`employer${id}`));
     if (value.replace(/\s/g, "").length < 2) {
       setEmployerValid("დამსაქმებელი ძალზე მოკლეა");
       if (ready) {

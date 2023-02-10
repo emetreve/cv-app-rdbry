@@ -17,8 +17,6 @@ function ExperiencePage() {
   if (!localStorage.getItem("expCount")) {
     localStorage.setItem("expCount", 1);
   }
-  console.log(updateCv);
-  useEffect(() => {}, [count, readyOthers]);
   return (
     <>
       <div className={styles.wrapper}>
@@ -37,7 +35,6 @@ function ExperiencePage() {
             <p className={styles.pageCount}>2/3</p>
             <img src={line} className={styles.divider} alt="divider" />
             <div className={styles.experienceComponentWrapper}>
-              {console.log(888, Number(localStorage.getItem("expCount")))}
               {Array.from(
                 { length: Number(localStorage.getItem("expCount")) || count },
                 (_, i) => {

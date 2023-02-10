@@ -38,7 +38,6 @@ function ResumePage() {
                   alt="close "
                   className={styles.close}
                   onClick={() => {
-                    console.log("clicked");
                     setHide(true);
                   }}
                 />

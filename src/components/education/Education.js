@@ -73,14 +73,9 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
         localStorage.getItem(`eduDescription${id}`).length < 2
       ) {
         ready(false);
-        // console.log(111, "setting to false");
-        // console.log(1000000, localStorage.getItem(`title${id}`).length);
       } else {
         ready(true);
         updateCvSetter(!updateCv);
-
-        // console.log("setting to true");
-        // console.log(100000, localStorage.getItem(`title${id}`).length);
       }
     }
 
