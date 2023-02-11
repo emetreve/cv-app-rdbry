@@ -197,7 +197,10 @@ function Cv({ hidePersonal, hideExperience, update, hideEducation }) {
             />
           )}
           <img
-            style={hidePersonal ? { display: "none" } : null}
+            style={{
+              ...(hidePersonal ? { display: "none" } : null),
+              ...(!localStorage.getItem("about") && { marginTop: "120px" }),
+            }}
             src={divider}
             className={styles.divider}
             alt="divider"

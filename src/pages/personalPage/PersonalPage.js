@@ -74,21 +74,6 @@ function PersonalPage() {
       }
     }
 
-    if (!localStorage.getItem("picture")) {
-      let othersPresent =
-        nameValid === "" &&
-        surnameValid === "" &&
-        surnameValid === "" &&
-        emailValid === "" &&
-        phoneValid === "" &&
-        localStorage.getItem("name") &&
-        localStorage.getItem("surname") &&
-        localStorage.getItem("email") &&
-        localStorage.getItem("phone");
-      if (othersPresent) {
-        setPictureValid("სურათი დაგრჩა");
-      }
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [personal]);
 
