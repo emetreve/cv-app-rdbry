@@ -70,6 +70,10 @@ function PersonalPage() {
         setPhoneValid("მობილურის ნომერი უნდა იყოს 13 ნიშნა");
       } else if (!/^[0-9\s+]+$/.test(localStorage.getItem("phone"))) {
         setPhoneValid("მობილურის ნომერში ჩაწერეთ მხოლოდ ციფრები");
+      } else if (
+        localStorage.getItem("phone").replace(/\s/g, "").length !== 13
+      ) {
+        setPhoneValid("მობილურის ნომერი არავალიდურია");
       } else {
         setPhoneValid("");
       }

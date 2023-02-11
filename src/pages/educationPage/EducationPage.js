@@ -124,11 +124,22 @@ function EducationPage() {
 
     var file = dataURLtoFile(localStorage.getItem("picture"));
 
+    //handle phone formatting
+    function formatNumber(number) {
+      let array = number.split("");
+      array.splice(4, 1);
+      array.splice(7, 1);
+      array.splice(9, 1);
+      array.splice(11, 1);
+      return array.join("");
+    }
+    let formattedNumber = formatNumber(localStorage.getItem("phone"));
+
     let data = {
       name: localStorage.getItem("name"),
       surname: localStorage.getItem("surname"),
       email: localStorage.getItem("email"),
-      phone_number: localStorage.getItem("phone").replace(/\s+/g, ""),
+      phone_number: formattedNumber,
       experiences: [...Object.values(exp)],
       educations: [...Object.values(edu)],
       image: file,
