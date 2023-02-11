@@ -91,7 +91,7 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     if (localStorage.getItem(`employer${id}`)) {
       if (
         localStorage.getItem(`employer${id}`).replace(/\s/g, "").length < 2 ||
-        !/^[A-Za-z0-9 ]*$/.test(localStorage.getItem(`employer${id}`))
+        !/^[A-Za-z0-9 ა-ჰ]*$/.test(localStorage.getItem(`employer${id}`))
       ) {
         setEmployerValid(
           "დამსაქმებელი ძალზე მოკლეა, ან არასწორ სიმბოლოებს იყენებ"
@@ -173,7 +173,10 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     updatedExperience.employer = value;
     setExperience(updatedExperience);
     localStorage.setItem(`employer${id}`, value);
-    if (value.replace(/\s/g, "").length < 2 || !/^[A-Za-z0-9 ]*$/.test(value)) {
+    if (
+      value.replace(/\s/g, "").length < 2 ||
+      !/^[A-Za-z0-9 ა-ჰ]*$/.test(value)
+    ) {
       setEmployerValid(
         "დამსაქმებელი ძალზე მოკლეა, ან არასწორ სიმბოლოებს იყენებ"
       );
