@@ -224,3 +224,27 @@
   height: 30px;
   margin-bottom: 20px;
 }
+
+.goBack {
+  width: 120px;
+  height: 45px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  border: none;
+  background: #6b40e3;
+  border-radius: 4px;
+  transition: var(--transition);
+  margin-top: 35px;
+}
+
+.goBack:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+  border: 1px solid #6b40e3;
+  background-color: transparent;
+  color: #6b40e3;
+}

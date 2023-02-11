@@ -89,8 +89,13 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     }
 
     if (localStorage.getItem(`employer${id}`)) {
-      if (localStorage.getItem(`employer${id}`).replace(/\s/g, "").length < 2) {
-        setEmployerValid("დამსაქმებელი ძალზე მოკლეა");
+      if (
+        localStorage.getItem(`employer${id}`).replace(/\s/g, "").length < 2 ||
+        localStorage.getItem(`employer${id}`).includes(".")
+      ) {
+        setEmployerValid(
+          "დამსაქმებელი ძალზე მოკლეა, ან არასწორ სიმბოლოებს იყენებ"
+        );
         if (ready) {
           ready(false);
         }
@@ -168,8 +173,10 @@ function Experience({ id, ready, readyOthers, updateCv, updateCvSetter }) {
     updatedExperience.employer = value;
     setExperience(updatedExperience);
     localStorage.setItem(`employer${id}`, value);
-    if (value.replace(/\s/g, "").length < 2) {
-      setEmployerValid("დამსაქმებელი ძალზე მოკლეა");
+    if (value.replace(/\s/g, "").length < 2 || value.includes(".")) {
+      setEmployerValid(
+        "დამსაქმებელი ძალზე მოკლეა, ან არასწორ სიმბოლოებს იყენებ"
+      );
       if (ready) {
         ready(false);
       }

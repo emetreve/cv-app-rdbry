@@ -53,6 +53,8 @@ function PersonalPage() {
         setEmailValid("იმეილი ძალზე მოკლეა");
       } else if (localStorage.getItem("email").includes(" ")) {
         setEmailValid("სფეისების გარეშე დაწერეთ");
+      } else if (!/^[a-zA-Z0-9]/.test(localStorage.getItem("email"))) {
+        setEmailValid("იმეილი შეიყვანეთ სწორი ფორმატით");
       } else {
         setEmailValid("");
       }
@@ -135,6 +137,8 @@ function PersonalPage() {
       setEmailValid("იმეილი ძალზე მოკლეა");
     } else if (value.includes(" ")) {
       setEmailValid("სფეისების გარეშე დაწერეთ");
+    } else if (!/^[a-zA-Z0-9]/.test(localStorage.getItem("email"))) {
+      setEmailValid("იმეილი შეიყვანეთ სწორი ფორმატით");
     } else {
       setEmailValid("");
     }

@@ -29,6 +29,7 @@ function ResumePage() {
       />
       {serverData.id && (
         <>
+          {localStorage.clear()}
           <div className={styles.wrapper}>
             {!hide && (
               <div className={styles.banner}>
@@ -228,6 +229,12 @@ function ResumePage() {
               }
             )}
           </div>
+          <button
+            className={styles.goBack}
+            onClick={() => navigate("/personal")}
+          >
+            უკან
+          </button>
         </div>
       )}
     </>
