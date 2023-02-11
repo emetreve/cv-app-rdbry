@@ -230,6 +230,11 @@ function ResumePage() {
         </>
       )}
 
+      {/* This following section isn't supposed to be rendered at all, because
+      all the validation errors are already handled when the user is filling the form.
+      However, I've still put this section here, just in case something unexpected 
+      goes wrong and the server throws any error. In which case, any error will 
+      be shown to the user, or you, the testers */}
       {serverErrors.message && (
         <div className={styles.warning}>
           <img src={invalid} alt="warning" className={styles.invalid} />
