@@ -128,7 +128,7 @@ function EducationPage() {
       name: localStorage.getItem("name"),
       surname: localStorage.getItem("surname"),
       email: localStorage.getItem("email"),
-      phone_number: localStorage.getItem("phone"),
+      phone_number: localStorage.getItem("phone").replace(/\s+/g, ""),
       experiences: [...Object.values(exp)],
       educations: [...Object.values(edu)],
       image: file,

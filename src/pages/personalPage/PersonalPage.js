@@ -10,6 +10,7 @@ import invalid from "../../images/invalid.png";
 function PersonalPage() {
   const inputRef = useRef(null);
   const navigate = useNavigate();
+  const phoneRef = useRef();
 
   const [personal, setPersonal] = useState({
     name: localStorage.getItem("name") || "",
@@ -65,11 +66,9 @@ function PersonalPage() {
         setPhoneValid("მობილურის ნომერი სავალდებულოა");
       } else if (localStorage.getItem("phone").slice(0, 4) !== "+995") {
         setPhoneValid("მობილურის ნომერი უნდა იწყებოდეს +995-ით");
-      } else if (localStorage.getItem("phone").length !== 13) {
+      } else if (localStorage.getItem("phone").length !== 17) {
         setPhoneValid("მობილურის ნომერი უნდა იყოს 13 ნიშნა");
       } else if (!/^[0-9\s+]+$/.test(localStorage.getItem("phone"))) {
-        setPhoneValid("მობილურის ნომერში ჩაწერეთ მხოლოდ ციფრები");
-      } else if (/\s/g.test(localStorage.getItem("phone"))) {
         setPhoneValid("მობილურის ნომერში ჩაწერეთ მხოლოდ ციფრები");
       } else {
         setPhoneValid("");
@@ -163,26 +162,43 @@ function PersonalPage() {
     }
   }
 
-  function handlePhone(e) {
-    const { value } = e.target;
-    const updatedPersonal = { ...personal };
-    updatedPersonal.phone = value;
-    setPersonal(updatedPersonal);
-    localStorage.setItem("phone", `${value}`);
+  function handlePhone() {
+    let input = phoneRef.current;
 
-    if (value.length < 2) {
-      setPhoneValid("მობილურის ნომერი სავალდებულოა");
-    } else if (value.slice(0, 4) !== "+995") {
-      setPhoneValid("მობილურის ნომერი უნდა იწყებოდეს +995-ით");
-    } else if (value.length !== 13) {
-      setPhoneValid("მობილურის ნომერი უნდა იყოს 13 ნიშნა");
-    } else if (!/^[0-9\s+]+$/.test(value)) {
-      setPhoneValid("მობილურის ნომერში ჩაწერეთ მხოლოდ ციფრები");
-    } else if (/\s/g.test(value)) {
-      setPhoneValid("მობილურის ნომერში ჩაწერეთ მხოლოდ ციფრები");
-    } else {
-      setPhoneValid("");
-    }
+    input.addEventListener("input", function (e) {
+      if (e.data !== null) {
+        if (
+          phoneRef.current.value.length === 4 ||
+          phoneRef.current.value.length === 8 ||
+          phoneRef.current.value.length === 11 ||
+          phoneRef.current.value.length === 14
+        ) {
+          phoneRef.current.value = phoneRef.current.value + " ";
+        }
+      }
+    });
+    console.log(phoneRef.current.value);
+
+    const updatedPersonal = { ...personal };
+    updatedPersonal.phone = phoneRef.current.value;
+    setPersonal(updatedPersonal);
+    localStorage.setItem("phone", `${phoneRef.current.value}`);
+
+    //5 9 12 15
+
+    // if (value.length < 2) {
+    //   setPhoneValid("მობილურის ნომერი სავალდებულოა");
+    // } else if (value.slice(0, 4) !== "+995") {
+    //   setPhoneValid("მობილურის ნომერი უნდა იწყებოდეს +995-ით");
+    // } else if (value.length !== 13) {
+    //   setPhoneValid("მობილურის ნომერი უნდა იყოს 13 ნიშნა");
+    // } else if (!/^[0-9\s+]+$/.test(value)) {
+    //   setPhoneValid("მობილურის ნომერში ჩაწერეთ მხოლოდ ციფრები");
+    // } else if (/\s/g.test(value)) {
+    //   setPhoneValid("მობილურის ნომერში ჩაწერეთ მხოლოდ ციფრები");
+    // } else {
+    //   setPhoneValid("");
+    // }
 
     return true;
   }
@@ -391,6 +407,8 @@ function PersonalPage() {
                 </p>
 
                 <input
+                  ref={phoneRef}
+                  if="phone"
                   className={styles.inputItemLong}
                   placeholder="+995551123456"
                   value={personal.phone || localStorage.getItem("phone") || ""}
