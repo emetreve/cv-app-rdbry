@@ -17,6 +17,15 @@ function ResumePage() {
   const base = "https://resume.redberryinternship.ge";
   const navigate = useNavigate();
 
+  function undoFormatNumber(number) {
+    let array = number.split("");
+    array.splice(4, 0, " "); //adds space at index 1
+    array.splice(8, 0, " ");
+    array.splice(11, 0, " ");
+    array.splice(14, 0, " ");
+    return array.join("");
+  }
+
   return (
     <>
       <img
@@ -100,7 +109,9 @@ function ResumePage() {
                     className={styles.phoneIcon}
                     alt="phone icon"
                   />
-                  <p className={styles.phone}>{serverData.phone_number}</p>
+                  <p className={styles.phone}>
+                    {undoFormatNumber(serverData.phone_number)}
+                  </p>
                 </div>
                 <div
                   style={{
