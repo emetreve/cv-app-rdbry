@@ -11,7 +11,8 @@ import back from "../../images/backDark.png";
 import invalid from "../../images/invalid.png";
 
 function ResumePage() {
-  const { serverData, serverErrors } = useContext(AppContext);
+  const { serverData, serverErrors, setServerData, setServerErrors } =
+    useContext(AppContext);
   const [hide, setHide] = useState(false);
   const base = "https://resume.redberryinternship.ge";
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ function ResumePage() {
         onClick={() => {
           localStorage.clear();
           navigate("/");
+          window.location.reload();
         }}
       />
       {serverData.id && (
@@ -231,7 +233,11 @@ function ResumePage() {
           </div>
           <button
             className={styles.goBack}
-            onClick={() => navigate("/personal")}
+            onClick={() => {
+              setServerErrors([]);
+              setServerData([]);
+              navigate("/personal");
+            }}
           >
             უკან
           </button>
