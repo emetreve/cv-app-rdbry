@@ -72,7 +72,15 @@ function ResumePage() {
                   paddingBottom: "120px",
                 }}
               >
-                <div style={{ display: "flex", flexDirection: "row" }}>
+                <div
+                  style={{
+                    display: "inline-block",
+                    lineBreak: "anywhere",
+                    marginTop: "70px",
+                    marginLeft: "85px",
+                    maxWidth: "480px",
+                  }}
+                >
                   <p className={styles.name}>
                     {serverData.name.toLocaleUpperCase()}
                   </p>

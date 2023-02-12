@@ -120,10 +120,22 @@ function Cv({ hidePersonal, hideExperience, update, hideEducation }) {
   }, [update]);
 
   return (
-    <div style={{ position: "relative", minHeight: "900px" }}>
+    <div
+      style={{
+        position: "relative",
+        minHeight: "900px",
+      }}
+    >
       {true ? (
-        <div style={{}}>
-          <div style={{ display: "flex", flexDirection: "row" }}>
+        <div style={{ maxWidth: "600px" }}>
+          <div
+            style={{
+              display: "inline-block",
+              marginTop: "70px",
+              marginLeft: "80px",
+              lineBreak: "anywhere",
+            }}
+          >
             {localStorage.getItem("name") && (
               <p className={styles.name}>{`${localStorage
                 .getItem("name")
@@ -132,10 +144,9 @@ function Cv({ hidePersonal, hideExperience, update, hideEducation }) {
 
             {localStorage.getItem("surname") &&
               !localStorage.getItem("name") && (
-                <p
-                  className={styles.surname}
-                  style={{ marginLeft: "84px" }}
-                >{`${localStorage.getItem("surname").toLocaleUpperCase()} `}</p>
+                <p className={styles.surname}>{`${localStorage
+                  .getItem("surname")
+                  .toLocaleUpperCase()} `}</p>
               )}
             {localStorage.getItem("surname") &&
               localStorage.getItem("name") && (
@@ -216,18 +227,18 @@ function Cv({ hidePersonal, hideExperience, update, hideEducation }) {
                   <div key={i} style={{ width: "860px" }}>
                     <div
                       style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        marginTop: "30px",
+                        display: "inline-block",
+                        lineBreak: "anywhere",
+                        // display: "flex",
+                        // flexDirection: "row",
+                        marginTop: "20px",
+                        marginLeft: "85px",
                       }}
                     >
                       <b>
-                        <p className={styles.title}>
-                          {each[0] && each[0].concat(", ")}
-                        </p>
-                      </b>
-                      <b>
-                        <p className={styles.employer}>&nbsp;{each[1]}</p>
+                        <span className={styles.title}>
+                          {each[0] && each[0].concat(", ")} &nbsp;{each[1]}
+                        </span>
                       </b>
                     </div>
                     <p className={styles.dates}>
@@ -256,6 +267,7 @@ function Cv({ hidePersonal, hideExperience, update, hideEducation }) {
                       style={{
                         display: "flex",
                         flexDirection: "row",
+                        marginLeft: "85px",
                         marginTop: "30px",
                       }}
                     >
