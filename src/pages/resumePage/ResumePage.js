@@ -205,12 +205,8 @@ function ResumePage() {
                         >
                           <b>
                             <p className={styles.title}>
-                              {eachEdu.degree.concat(", ")}
-                            </p>
-                          </b>
-                          <b>
-                            <p className={styles.employer}>
-                              &nbsp;{eachEdu.institute}
+                              {eachEdu.degree.concat(", ")}&nbsp;
+                              {eachEdu.institute}
                             </p>
                           </b>
                         </div>

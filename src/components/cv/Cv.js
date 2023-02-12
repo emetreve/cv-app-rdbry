@@ -273,11 +273,9 @@ function Cv({ hidePersonal, hideExperience, update, hideEducation }) {
                     >
                       <b>
                         <p className={styles.title}>
-                          {eachEdu[0] && eachEdu[0].concat(", ")}
+                          {eachEdu[0] && eachEdu[0].concat(", ")}&nbsp;
+                          {eachEdu[1]}
                         </p>
-                      </b>
-                      <b>
-                        <p className={styles.employer}>&nbsp;{eachEdu[1]}</p>
                       </b>
                     </div>
                     <p className={styles.dates}>{eachEdu[2]}</p>
