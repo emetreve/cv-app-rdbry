@@ -168,12 +168,7 @@ function ResumePage() {
                         >
                           <b>
                             <p className={styles.title}>
-                              {each.position.concat(", ")}
-                            </p>
-                          </b>
-                          <b>
-                            <p className={styles.employer}>
-                              &nbsp;{each.employer}
+                              {each.position.concat(", ")} &nbsp;{each.employer}
                             </p>
                           </b>
                         </div>
