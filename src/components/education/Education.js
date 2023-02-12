@@ -387,7 +387,7 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
         <p className={styles.descriptionLabel}>აღწერა</p>
         <textarea
           className={styles.textArea}
-          placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
+          placeholder="განათლების აღწერა"
           value={
             localStorage.getItem(`eduDescription${id}`) ||
             experience.descriptionEdu ||
