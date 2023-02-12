@@ -19,7 +19,7 @@ function ResumePage() {
 
   function undoFormatNumber(number) {
     let array = number.split("");
-    array.splice(4, 0, " "); //adds space at index 1
+    array.splice(4, 0, " ");
     array.splice(8, 0, " ");
     array.splice(11, 0, " ");
     array.splice(14, 0, " ");
@@ -234,7 +234,7 @@ function ResumePage() {
       all the validation errors are already handled when the user is filling the form.
       However, I've still put this section here, just in case something unexpected 
       goes wrong and the server throws any error. In which case, any error will 
-      be shown to the user, or you, the testers */}
+      be shown to the user, or you, the tester */}
       {serverErrors.message && (
         <div className={styles.warning}>
           <img src={invalid} alt="warning" className={styles.invalid} />

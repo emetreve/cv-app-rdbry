@@ -181,28 +181,12 @@ function PersonalPage() {
         }
       }
     });
-    console.log(phoneRef.current.value);
+    // console.log(phoneRef.current.value);
 
     const updatedPersonal = { ...personal };
     updatedPersonal.phone = phoneRef.current.value;
     setPersonal(updatedPersonal);
     localStorage.setItem("phone", `${phoneRef.current.value}`);
-
-    //5 9 12 15
-
-    // if (value.length < 2) {
-    //   setPhoneValid("მობილურის ნომერი სავალდებულოა");
-    // } else if (value.slice(0, 4) !== "+995") {
-    //   setPhoneValid("მობილურის ნომერი უნდა იწყებოდეს +995-ით");
-    // } else if (value.length !== 13) {
-    //   setPhoneValid("მობილურის ნომერი უნდა იყოს 13 ნიშნა");
-    // } else if (!/^[0-9\s+]+$/.test(value)) {
-    //   setPhoneValid("მობილურის ნომერში ჩაწერეთ მხოლოდ ციფრები");
-    // } else if (/\s/g.test(value)) {
-    //   setPhoneValid("მობილურის ნომერში ჩაწერეთ მხოლოდ ციფრები");
-    // } else {
-    //   setPhoneValid("");
-    // }
 
     return true;
   }
