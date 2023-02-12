@@ -5,6 +5,7 @@ import styles from "./Education.module.css";
 import valid from "../../images/valid.png";
 import invalid from "../../images/invalid.png";
 import divider from "../../images/divider.png";
+import dropDown from "../../images/dropDown.png";
 
 function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
   const [experience, setExperience] = useState({
@@ -300,6 +301,7 @@ function Education({ id, ready, readyOthers, updateCv, updateCvSetter }) {
               {experience.degree ||
                 localStorage.getItem(`degree${id}`) ||
                 "აირჩიეთ ხარისხი"}
+              <img src={dropDown} alt="dropdown" className={styles.dropDown} />
             </div>
             {open && (
               <div className={styles.optionsContainer}>

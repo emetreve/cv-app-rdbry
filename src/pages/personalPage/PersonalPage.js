@@ -352,7 +352,7 @@ function PersonalPage() {
 
                 <input
                   className={styles.inputItemLong}
-                  placeholder="emetreve@redberry.ge"
+                  placeholder="anzorr666@redberry.ge"
                   value={personal.email || localStorage.getItem("email") || ""}
                   type="text"
                   onChange={handleEmail}
@@ -398,7 +398,7 @@ function PersonalPage() {
                   ref={phoneRef}
                   if="phone"
                   className={styles.inputItemLong}
-                  placeholder="+995551123456"
+                  placeholder="+995 551 12 34 56"
                   value={personal.phone || localStorage.getItem("phone") || ""}
                   type="text"
                   onChange={handlePhone}
