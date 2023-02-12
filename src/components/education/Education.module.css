@@ -24,6 +24,7 @@
   order: 1;
   align-self: stretch;
   flex-grow: 0;
+  padding-right: 50px;
 }
 
 .checkMarkLongEmployer {
