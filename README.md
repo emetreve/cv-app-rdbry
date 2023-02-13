@@ -4,7 +4,7 @@
 
 \
 \
- [![tool](https://skills.thijs.gg/icons?i=react&)](https://skills.thijs.gg)
+ ![tool](https://skills.thijs.gg/icons?i=react&)
 
 Spinning it up ⬇️
 
