@@ -54,7 +54,10 @@ function PersonalPage() {
         setEmailValid("იმეილი ძალზე მოკლეა");
       } else if (localStorage.getItem("email").includes(" ")) {
         setEmailValid("სფეისების გარეშე დაწერეთ");
-      } else if (!/^[a-zA-Z0-9@._-]+$/.test(localStorage.getItem("email"))) {
+      } else if (
+        !/^[a-zA-Z0-9@._-]+$/.test(localStorage.getItem("email")) ||
+        checkPatternEmail(localStorage.getItem("email"))
+      ) {
         setEmailValid("იმეილი შეიყვანეთ სწორი ფორმატით");
       } else {
         setEmailValid("");
@@ -126,6 +129,14 @@ function PersonalPage() {
     return true;
   }
 
+  //helper function for email validation
+  function checkPatternEmail(str) {
+    let lastAtIndex = str.lastIndexOf("@");
+    let beforeAt = str.charAt(lastAtIndex - 1);
+    let pattern = /[^a-zA-Z0-9]/;
+    return pattern.test(beforeAt);
+  }
+
   function handleEmail(e) {
     const { value } = e.target;
     const updatedPersonal = { ...personal };
@@ -140,7 +151,10 @@ function PersonalPage() {
       setEmailValid("იმეილი ძალზე მოკლეა");
     } else if (value.includes(" ")) {
       setEmailValid("სფეისების გარეშე დაწერეთ");
-    } else if (!/^[a-zA-Z0-9@._-]+$/.test(localStorage.getItem("email"))) {
+    } else if (
+      !/^[a-zA-Z0-9@._-]+$/.test(localStorage.getItem("email")) ||
+      checkPatternEmail(value)
+    ) {
       setEmailValid("იმეილი შეიყვანეთ სწორი ფორმატით");
     } else {
       setEmailValid("");
